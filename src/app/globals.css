@@ -1,26 +1,199 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary colors */
+  --primary-main: #6366F1;
+  --primary-light: #818CF8;
+  --primary-dark: #4F46E5;
+  
+  /* Secondary colors */
+  --secondary-main: #10B981;
+  --secondary-light: #34D399;
+  --secondary-dark: #059669;
+  
+  /* Accent colors */
+  --accent-main: #F59E0B;
+  --accent-light: #FBBF24;
+  --accent-dark: #D97706;
+  
+  /* Background colors - Light mode */
+  --bg-light-primary: #FFFFFF;
+  --bg-light-secondary: #F8FAFC;
+  --bg-light-tertiary: #F1F5F9;
+  
+  /* Background colors - Dark mode */
+  --bg-dark-primary: #0F172A;
+  --bg-dark-secondary: #1E293B;
+  --bg-dark-tertiary: #334155;
+  
+  /* Text colors - Light mode */
+  --text-light-primary: #1E293B;
+  --text-light-secondary: #475569;
+  --text-light-tertiary: #64748B;
+  
+  /* Text colors - Dark mode */
+  --text-dark-primary: #F8FAFC;
+  --text-dark-secondary: #E2E8F0;
+  --text-dark-tertiary: #CBD5E1;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--bg-light-tertiary);
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background-color: var(--bg-dark-tertiary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-main);
+    border-radius: 9999px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-light);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Background utilities */
+  .bg-primary-gradient {
+    background: linear-gradient(135deg, var(--primary-main) 0%, var(--primary-dark) 100%);
+  }
+  
+  .bg-secondary-gradient {
+    background: linear-gradient(135deg, var(--secondary-main) 0%, var(--secondary-dark) 100%);
+  }
+  
+  .bg-accent-gradient {
+    background: linear-gradient(135deg, var(--accent-main) 0%, var(--accent-dark) 100%);
+  }
+  
+  /* Text utilities */
+  .text-primary-gradient {
+    background: linear-gradient(to right, var(--primary-main), var(--primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .text-secondary-gradient {
+    background: linear-gradient(to right, var(--secondary-main), var(--secondary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .text-accent-gradient {
+    background: linear-gradient(to right, var(--accent-main), var(--accent-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Card utilities */
+  .card {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+  
+  /* Button utilities */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-main);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-main);
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--secondary-dark);
+  }
+  
+  .btn-accent {
+    background-color: var(--accent-main);
+    color: white;
+  }
+  
+  .btn-accent:hover {
+    background-color: var(--accent-dark);
+  }
+  
+  .btn-outline {
+    border: 2px solid var(--primary-main);
+    color: var(--primary-main);
+  }
+  
+  .btn-outline:hover {
+    background-color: var(--primary-main);
+    color: white;
+  }
+  
+  /* Section utilities */
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, var(--primary-main), var(--primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Animation utilities */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
 }
