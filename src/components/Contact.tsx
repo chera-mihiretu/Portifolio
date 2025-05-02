@@ -119,7 +119,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="mt-8 text-sm text-gray-600 dark:text-gray-400"
           >
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Chera Mihiretu. All rights reserved.
           </motion.p>
         </div>
       </div>

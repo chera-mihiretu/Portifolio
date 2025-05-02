@@ -22,10 +22,6 @@ const Education = () => {
         ],
         projects: [
           {
-            name: 'LocalizeAI Project',
-            description: 'Translating Ethiopian languages using AI'
-          },
-          {
             name: 'Real-Time Digit Recognition',
             description: 'Using a thread pool for real-time predictions and GUI design'
           }
@@ -41,7 +37,7 @@ const Education = () => {
       details: {
         achievements: [
           'Solved 1000+ problems on LeetCode and Codeforces',
-          'Developed Serai - a platform for lawyers using AI',
+          'Developed Localize-AI - a platform for amharic speakers using AI',
           'Part of program that placed 60+ students in leading tech companies'
         ]
       }

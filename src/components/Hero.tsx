@@ -164,8 +164,7 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 1.5 }}
                 className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl"
               >
-                A journey of passion, perseverance, and technological excellence. 
-                From the vibrant streets of Addis Ababa to the forefront of global software development.
+                Software Engineering student at Adama Science and Technology University.
               </motion.p>
 
               {/* Action Buttons */}
