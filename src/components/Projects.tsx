@@ -1,18 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import Modal from './Modal';
 
 const Projects = () => {
-  const [_, setHoveredProject] = useState<number | null>(null);
+  const [, setHoveredProject] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number[]>([]);
   const [isTransitioning, setIsTransitioning] = useState<boolean[]>([]);
   const [gifPlaying, setGifPlaying] = useState<boolean[]>([]);
+  const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
   const intervalRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
-
-  const projectsData = [
+  
+  const projectsData = useMemo(() => [
     {
       name: 'Real-Time Digit Recognition',
       description: 'Used a thread pool for real-time predictions with a GUI that involved drawing, image uploading, and live camera prediction.',
@@ -66,14 +68,14 @@ const Projects = () => {
         'Collaborated in team environment with Git'
       ]
     }
-  ];
+  ], []);
 
   useEffect(() => {
     // Initialize states
     setActiveImageIndex(projectsData.map(() => 0));
     setIsTransitioning(projectsData.map(() => false));
     setGifPlaying(projectsData.map(() => false));
-  }, []);
+  }, [projectsData]);
 
   const handleGifLoad = (projectIndex: number, imageIndex: number) => {
     const isGif = projectsData[projectIndex].images[imageIndex].endsWith('.gif');
@@ -162,6 +164,10 @@ const Projects = () => {
     });
   };
 
+  const handleImageClick = (imageUrl: string, alt: string) => {
+    setSelectedImage({ url: imageUrl, alt });
+  };
+
   return (
     <section id="projects" className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -203,6 +209,7 @@ const Projects = () => {
                     className="relative h-64 lg:h-96 rounded-xl overflow-hidden group"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
+                    onClick={() => handleImageClick(project.images[activeImageIndex[index]], `${project.name} - Image ${activeImageIndex[index] + 1}`)}
                   >
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-800 dark:bg-gray-900 transition-colors duration-300 group-hover:bg-white">
                       <div className="relative w-full h-full">
@@ -298,6 +305,14 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {/* Add Modal */}
+      <Modal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageUrl={selectedImage?.url || ''}
+        alt={selectedImage?.alt || ''}
+      />
     </section>
   );
 };
