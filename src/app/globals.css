@@ -1,42 +1,109 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "tailwindcss";
 
 :root {
-  /* Primary colors */
-  --primary-main: #6366F1;
-  --primary-light: #818CF8;
-  --primary-dark: #4F46E5;
-  
-  /* Secondary colors */
-  --secondary-main: #10B981;
-  --secondary-light: #34D399;
-  --secondary-dark: #059669;
-  
-  /* Accent colors */
-  --accent-main: #F59E0B;
-  --accent-light: #FBBF24;
-  --accent-dark: #D97706;
-  
-  /* Background colors - Light mode */
-  --bg-light-primary: #FFFFFF;
-  --bg-light-secondary: #F8FAFC;
-  --bg-light-tertiary: #F1F5F9;
-  
-  /* Background colors - Dark mode */
-  --bg-dark-primary: #0F172A;
-  --bg-dark-secondary: #1E293B;
-  --bg-dark-tertiary: #334155;
-  
-  /* Text colors - Light mode */
-  --text-light-primary: #1E293B;
-  --text-light-secondary: #475569;
-  --text-light-tertiary: #64748B;
-  
-  /* Text colors - Dark mode */
-  --text-dark-primary: #F8FAFC;
-  --text-dark-secondary: #E2E8F0;
-  --text-dark-tertiary: #CBD5E1;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #2d3748;
+}
+
+/* Smooth transitions for theme changes */
+.dark {
+  color-scheme: dark;
+}
+
+/* Ensure proper contrast in both themes */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-gray-900 dark:text-white;
+}
+
+p, span, div {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* Links */
+a {
+  @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300;
+}
+
+/* Cards and containers */
+.card {
+  @apply bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600;
+}
+
+/* Borders */
+.border-theme {
+  @apply border-gray-200 dark:border-gray-700;
+}
+
+/* Inputs */
+input, textarea, select {
+  @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2;
+}
+
+/* Code blocks */
+pre, code {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200;
 }
 
 @layer base {
@@ -196,5 +263,44 @@
     100% {
       transform: translateY(0px);
     }
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

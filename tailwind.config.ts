@@ -6,18 +6,33 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         primary: {
-          main: 'var(--primary-main)',
-          light: 'var(--primary-light)',
-          dark: 'var(--primary-dark)',
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
         },
         secondary: {
-          main: 'var(--secondary-main)',
-          light: 'var(--secondary-light)',
-          dark: 'var(--secondary-dark)',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         },
         accent: {
           main: 'var(--accent-main)',
@@ -65,6 +80,13 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+      },
+      transitionProperty: {
+        'colors': 'background-color, border-color, color, fill, stroke',
+      },
+      transitionDuration: {
+        '200': '200ms',
+        '300': '300ms',
       },
     },
   },
