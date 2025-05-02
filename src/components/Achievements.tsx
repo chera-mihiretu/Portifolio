@@ -1,16 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { useState } from 'react';
+import Modal from './Modal';
 
 const Achievements = () => {
+  const { theme } = useTheme();
+  const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
+
+  const handleImageClick = (imageUrl: string, alt: string) => {
+    setSelectedImage({ url: imageUrl, alt });
+  };
+
   const achievementsData = [
     {
       title: 'A2SV Hackathon',
       position: 'Top 8',
       description: 'Built a Localized AI project that supports Ethiopian local language speakers by enabling them to use language models in their native language.',
       icon: '🏆',
-      date: '2023',
+      date: '2024',
       category: 'Hackathon',
       image: '/assets/achievement/a2sv_hackathon.jpg'
     },
@@ -19,7 +29,7 @@ const Achievements = () => {
       position: '12th Place',
       description: 'Achieved 12th place in intensive competitive programming, showcasing strong problem-solving skills and algorithmic expertise.',
       icon: '⚡',
-      date: '2023',
+      date: '2024',
       category: 'Competitive Programming',
       image: '/assets/achievement/icpc.png'
     }
@@ -69,6 +79,12 @@ const Achievements = () => {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <button
+                    onClick={() => handleImageClick(achievement.image, achievement.title)}
+                    className="absolute bottom-4 right-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300"
+                  >
+                    View
+                  </button>
                 </div>
 
                 {/* Achievement Content */}
@@ -103,6 +119,14 @@ const Achievements = () => {
           ))}
         </div>
       </div>
+
+      {/* Image Modal */}
+      <Modal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageUrl={selectedImage?.url || ''}
+        alt={selectedImage?.alt || ''}
+      />
     </section>
   );
 };
