@@ -7,8 +7,8 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'A showcase of my journey from Ethiopia to global innovation',
+  title: 'Chera Mihiretu - Portfolio',
+  description: 'Personal portfolio showcasing my projects, skills, and achievements',
 };
 
 export default function RootLayout({
