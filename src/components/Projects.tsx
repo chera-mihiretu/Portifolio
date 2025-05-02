@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [_, setHoveredProject] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number[]>([]);
   const [isTransitioning, setIsTransitioning] = useState<boolean[]>([]);
   const [gifPlaying, setGifPlaying] = useState<boolean[]>([]);

@@ -12,7 +12,6 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, imageUrl, alt }: ModalProps) => {
-  const { theme } = useTheme();
 
   return (
     <AnimatePresence>

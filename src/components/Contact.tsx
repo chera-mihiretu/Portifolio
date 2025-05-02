@@ -62,7 +62,7 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Let's connect and create something amazing together
+            Let&apos;s connect and create something amazing together
           </p>
         </motion.div>
 
