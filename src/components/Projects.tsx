@@ -11,7 +11,6 @@ const Projects = () => {
   const [isTransitioning, setIsTransitioning] = useState<boolean[]>([]);
   const [gifPlaying, setGifPlaying] = useState<boolean[]>([]);
   const intervalRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
-  const gifRefs = useRef<{[key: number]: HTMLImageElement | null}>({});
 
   const projectsData = [
     {

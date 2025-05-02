@@ -7,7 +7,6 @@ import { useState } from 'react';
 import Modal from './Modal';
 
 const Achievements = () => {
-  const { theme } = useTheme();
   const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
 
   const handleImageClick = (imageUrl: string, alt: string) => {
