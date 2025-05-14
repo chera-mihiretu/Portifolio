@@ -14,9 +14,30 @@ const Hero = () => {
   const [texts] = useState(['Software Engineer', 'Mobile Developer', 'Backend Developer']);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [particles, setParticles] = useState<Array<{ x: number; y: number; duration: number; delay: number }>>([]);
+  const [codeElements, setCodeElements] = useState<Array<{ x: number; y: number; duration: number; delay: number; element: string }>>([]);
 
   useEffect(() => {
     setMounted(true);
+    // Generate random positions for particles
+    const newParticles = Array(50).fill(0).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: Math.random() * 5 + 5,
+      delay: Math.random() * 5
+    }));
+    setParticles(newParticles);
+
+    // Generate random positions for code elements
+    const elements = ['div', 'span', 'p', 'h1', 'button', 'a'];
+    const newCodeElements = Array(20).fill(0).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: Math.random() * 5 + 5,
+      delay: Math.random() * 5,
+      element: elements[Math.floor(Math.random() * elements.length)]
+    }));
+    setCodeElements(newCodeElements);
   }, []);
 
   useEffect(() => {
@@ -72,31 +93,31 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20"
+        className="absolute inset-0 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-orange-500/30 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-orange-900/30"
       />
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(50)].map((_, i) => (
+        {particles.map((particle, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 100 }}
             animate={{
-              opacity: [0, 1, 0],
+              opacity: [0, 0.6, 0],
               y: [-100, 100],
-              x: Math.random() * 200 - 100,
+              x: particle.x * 2 - 100,
             }}
             transition={{
-              duration: Math.random() * 5 + 5,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
-            className={`absolute w-1 h-1 rounded-full ${
-              theme === 'dark' ? 'bg-white/30' : 'bg-black/30'
+            className={`absolute w-2 h-2 rounded-full ${
+              theme === 'dark' ? 'bg-white/40' : 'bg-purple-600/40'
             }`}
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
             }}
           />
         ))}
@@ -104,36 +125,38 @@ const Hero = () => {
 
       {/* Code Animation Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 opacity-90" />
         <div className="absolute inset-0 code-animation">
-          {[...Array(20)].map((_, i) => (
+          {codeElements.map((codeEl, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 100 }}
               animate={{
-                opacity: [0, 0.5, 0],
+                opacity: [0, 0.7, 0],
                 y: [-100, 100],
-                x: Math.random() * 200 - 100,
+                x: codeEl.x * 2 - 100,
               }}
               transition={{
-                duration: Math.random() * 5 + 5,
+                duration: codeEl.duration,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: codeEl.delay,
               }}
-              className="absolute text-gray-700 font-mono text-sm"
+              className={`absolute font-mono text-sm ${
+                theme === 'dark' ? 'text-gray-600' : 'text-purple-400'
+              }`}
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${codeEl.x}%`,
+                top: `${codeEl.y}%`,
               }}
             >
-              {`<${['div', 'span', 'p', 'h1', 'button', 'a'][Math.floor(Math.random() * 6)]} />`}
+              {`<${codeEl.element} />`}
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 h-screen flex items-center justify-center">
+      <div className="relative z-10 h-screen flex items-center justify-center pt-16 sm:pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content and Buttons */}
