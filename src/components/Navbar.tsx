@@ -34,10 +34,9 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
+      initial={{ y: 0 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 navbar-transition ${
+      className={`fixed top-0 left-0 right-0 z-50 ${
         isScrolled
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg'
           : 'bg-transparent'
@@ -47,13 +46,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
             className="flex-shrink-0"
           >
             <Link href="/" className="flex items-center">
-              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent animate-gradient">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
                 Portfolio
               </span>
             </Link>
