@@ -1,47 +1,52 @@
- 
- 'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 
 const Skills = () => {
-    const skillsData = [
-        {
-          category: 'Programming Languages',
-          skills: ['Python', 'C++', 'Go', 'Dart (Flutter)', 'JavaScript', 'TypeScript', 'SQL'],
-          icon: '💻'
-        },
-        {
-          category: 'Web & App Development',
-          skills: ['React.js', 'Tailwind CSS', 'Flutter'],
-          icon: '🌐'
-        },
-        {
-          category: 'Databases & Backend',
-          skills: ['MongoDB', 'Firebase', 'SQL'],
-          icon: '🗄️'
-        },
-        {
-          category: 'DevOps & CI/CD',
-          skills: ['Docker', 'GitHub', 'Git', 'CI/CD'],
-          icon: '⚙️'
-        },
-        {
-          category: 'AI & Machine Learning',
-          skills: ['AI Agents', 'Computer Vision', 'Machine Learning'],
-          icon: '🤖'
-        },
-        {
-          category: 'Software Architecture & Practices',
-          skills: ['Clean Architecture', 'OOP', 'TDD', 'Multithreading', 'Thread Pools', 'Agile Development'],
-          icon: '🏗️'
-        },
-        {
-          category: 'Competitive Programming',
-          skills: ['Dijkstra\'s Algorithm', 'Floyd-Warshall', 'Dynamic Programming', 'Graph Algorithms', 'Data Structures'],
-          icon: '⚡'
-        }
-      ];
-      
+  const skillsData = [
+    {
+      id: 'prog-langs',
+      category: 'Programming Languages',
+      skills: ['Python', 'C++', 'Go', 'Dart (Flutter)', 'JavaScript', 'TypeScript', 'SQL'],
+      icon: '💻'
+    },
+    {
+      id: 'web-dev',
+      category: 'Web & App Development',
+      skills: ['React.js', 'Tailwind CSS', 'Flutter'],
+      icon: '🌐'
+    },
+    {
+      id: 'db-backend',
+      category: 'Databases & Backend',
+      skills: ['MongoDB', 'Firebase', 'SQL'],
+      icon: '🗄️'
+    },
+    {
+      id: 'devops',
+      category: 'DevOps & CI/CD',
+      skills: ['Docker', 'GitHub', 'Git', 'CI/CD'],
+      icon: '⚙️'
+    },
+    {
+      id: 'ai-ml',
+      category: 'AI & Machine Learning',
+      skills: ['AI Agents', 'Computer Vision', 'Machine Learning'],
+      icon: '🤖'
+    },
+    {
+      id: 'arch',
+      category: 'Software Architecture & Practices',
+      skills: ['Clean Architecture', 'OOP', 'TDD', 'Multithreading', 'Thread Pools', 'Agile Development'],
+      icon: '🏗️'
+    },
+    {
+      id: 'comp-prog',
+      category: 'Competitive Programming',
+      skills: ['Dijkstra\'s Algorithm', 'Floyd-Warshall', 'Dynamic Programming', 'Graph Algorithms', 'Data Structures'],
+      icon: '⚡'
+    }
+  ];
 
   return (
     <section id="skills" className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
@@ -64,12 +69,12 @@ const Skills = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillsData.map((category, index) => (
+          {skillsData.map((category) => (
             <motion.div
-              key={index}
+              key={category.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="relative"
             >
@@ -85,12 +90,12 @@ const Skills = () => {
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, idx) => (
+                  {category.skills.map((skill, skillIndex) => (
                     <motion.span
-                      key={idx}
+                      key={`${category.id}-${skillIndex}`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                      transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
                       viewport={{ once: true }}
                       className="px-3 py-1 text-sm bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-600 dark:text-purple-400 rounded-full"
                     >

@@ -11,6 +11,8 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, imageUrl, alt }: ModalProps) => {
+  // Don't render anything if there's no valid image URL
+  if (!imageUrl) return null;
 
   return (
     <AnimatePresence>
@@ -59,7 +61,7 @@ const Modal = ({ isOpen, onClose, imageUrl, alt }: ModalProps) => {
             <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-2xl">
               <Image
                 src={imageUrl}
-                alt={alt}
+                alt={alt || 'Modal image'}
                 fill
                 className="object-contain"
                 priority
@@ -72,4 +74,4 @@ const Modal = ({ isOpen, onClose, imageUrl, alt }: ModalProps) => {
   );
 };
 
-export default Modal; 
+export default Modal;
