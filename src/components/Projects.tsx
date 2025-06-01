@@ -83,90 +83,77 @@ const projectsData = [
 ];
 
 const Projects = () => {
-  const [, setHoveredProject] = useState<number | null>(null);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number[]>([]);
   const [isTransitioning, setIsTransitioning] = useState<boolean[]>([]);
-  const [gifPlaying, setGifPlaying] = useState<boolean[]>([]);
   const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
   const intervalRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
+  const transitionTimeoutRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
   
   useEffect(() => {
     // Initialize states
     setActiveImageIndex(new Array(projectsData.length).fill(0));
     setIsTransitioning(new Array(projectsData.length).fill(false));
-    setGifPlaying(new Array(projectsData.length).fill(false));
+    
+    // Cleanup function
+    return () => {
+      Object.values(intervalRefs.current).forEach(clearInterval);
+      Object.values(transitionTimeoutRefs.current).forEach(clearTimeout);
+    };
   }, []);
 
-  const handleGifLoad = (projectIndex: number, imageIndex: number) => {
-    const isGif = projectsData[projectIndex].images[imageIndex].endsWith('.gif');
-    if (isGif) {
-      setGifPlaying(prev => {
-        const newGifPlaying = [...prev];
-        newGifPlaying[projectIndex] = true;
-        return newGifPlaying;
-      });
-    }
-  };
+  const startImageTransition = (projectIndex: number) => {
+    if (isTransitioning[projectIndex]) return;
 
-  const handleGifEnd = (projectIndex: number) => {
-    setGifPlaying(prev => {
-      const newGifPlaying = [...prev];
-      newGifPlaying[projectIndex] = false;
-      return newGifPlaying;
+    setIsTransitioning(prev => {
+      const newTransitioning = [...prev];
+      newTransitioning[projectIndex] = true;
+      return newTransitioning;
     });
+
+    transitionTimeoutRefs.current[projectIndex] = setTimeout(() => {
+      setActiveImageIndex(prev => {
+        const newIndexes = [...prev];
+        newIndexes[projectIndex] = (newIndexes[projectIndex] + 1) % projectsData[projectIndex].images.length;
+        return newIndexes;
+      });
+
+      transitionTimeoutRefs.current[projectIndex] = setTimeout(() => {
+        setIsTransitioning(prev => {
+          const newTransitioning = [...prev];
+          newTransitioning[projectIndex] = false;
+          return newTransitioning;
+        });
+      }, 500);
+    }, 500);
   };
 
   const handleMouseEnter = (projectIndex: number) => {
     setHoveredProject(projectIndex);
-    // Clear any existing interval for this project
+    
+    // Clear any existing intervals
     if (intervalRefs.current[projectIndex]) {
       clearInterval(intervalRefs.current[projectIndex]);
     }
 
-    const startTransition = () => {
-      const isGif = projectsData[projectIndex].images[activeImageIndex[projectIndex]].endsWith('.gif');
-      const isGifPlaying = gifPlaying[projectIndex];
-
-      if (isGif && isGifPlaying) {
-        // If it's a GIF and it's still playing, wait and try again
-        setTimeout(startTransition, 100);
-        return;
-      }
-
-      setIsTransitioning(prev => {
-        const newTransitioning = [...prev];
-        newTransitioning[projectIndex] = true;
-        return newTransitioning;
-      });
-
-      setTimeout(() => {
-        setActiveImageIndex(prev => {
-          const newIndexes = [...prev];
-          newIndexes[projectIndex] = (newIndexes[projectIndex] + 1) % projectsData[projectIndex].images.length;
-          return newIndexes;
-        });
-
-        setTimeout(() => {
-          setIsTransitioning(prev => {
-            const newTransitioning = [...prev];
-            newTransitioning[projectIndex] = false;
-            return newTransitioning;
-          });
-        }, 500); // Transition duration
-      }, 500); // Start transition after 500ms
-    };
-
-    // Start the interval
-    intervalRefs.current[projectIndex] = setInterval(startTransition, 2000); // Change image every 2 seconds
+    // Start new interval
+    intervalRefs.current[projectIndex] = setInterval(() => {
+      startImageTransition(projectIndex);
+    }, 3000);
   };
 
   const handleMouseLeave = (projectIndex: number) => {
     setHoveredProject(null);
-    // Clear the interval when mouse leaves
+    
+    // Clear intervals and timeouts
     if (intervalRefs.current[projectIndex]) {
       clearInterval(intervalRefs.current[projectIndex]);
     }
-    // Reset to first image
+    if (transitionTimeoutRefs.current[projectIndex]) {
+      clearTimeout(transitionTimeoutRefs.current[projectIndex]);
+    }
+
+    // Reset states
     setActiveImageIndex(prev => {
       const newIndexes = [...prev];
       newIndexes[projectIndex] = 0;
@@ -176,11 +163,6 @@ const Projects = () => {
       const newTransitioning = [...prev];
       newTransitioning[projectIndex] = false;
       return newTransitioning;
-    });
-    setGifPlaying(prev => {
-      const newGifPlaying = [...prev];
-      newGifPlaying[projectIndex] = false;
-      return newGifPlaying;
     });
   };
 
@@ -224,27 +206,23 @@ const Projects = () => {
 
               <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
-                  {/* Project Image Carousel */}
+                  {/* Project Image */}
                   <div 
-                    className="relative h-64 lg:h-96 rounded-xl overflow-hidden group"
+                    className="relative h-64 lg:h-96 rounded-xl overflow-hidden group cursor-pointer"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
                     onClick={() => handleImageClick(project.images[activeImageIndex[index]], `${project.name} - Image ${activeImageIndex[index] + 1}`)}
                   >
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-800 dark:bg-gray-900 transition-colors duration-300 group-hover:bg-white">
                       <div className="relative w-full h-full">
-                        {project.images[activeImageIndex[index]] && (
-                          <Image
-                            src={project.images[activeImageIndex[index]]}
-                            alt={`${project.name} - Image ${activeImageIndex[index] + 1}`}
-                            fill
-                            className={`object-contain transition-all duration-500 ${
-                              isTransitioning[index] ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-                            } group-hover:scale-105`}
-                            onLoad={() => handleGifLoad(index, activeImageIndex[index])}
-                            onError={() => handleGifEnd(index)}
-                          />
-                        )}
+                        <Image
+                          src={project.images[activeImageIndex[index]]}
+                          alt={`${project.name} - Image ${activeImageIndex[index] + 1}`}
+                          fill
+                          className={`object-contain transition-all duration-500 ${
+                            isTransitioning[index] ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                          } group-hover:scale-105`}
+                        />
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -326,7 +304,7 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Add Modal */}
+      {/* Modal */}
       <Modal
         isOpen={!!selectedImage}
         onClose={() => setSelectedImage(null)}
@@ -337,4 +315,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
