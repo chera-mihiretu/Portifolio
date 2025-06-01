@@ -91,11 +91,9 @@ const Projects = () => {
   const transitionTimeoutRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
   
   useEffect(() => {
-    // Initialize states
     setActiveImageIndex(new Array(projectsData.length).fill(0));
     setIsTransitioning(new Array(projectsData.length).fill(false));
     
-    // Cleanup function
     return () => {
       Object.values(intervalRefs.current).forEach(clearInterval);
       Object.values(transitionTimeoutRefs.current).forEach(clearTimeout);
@@ -131,12 +129,10 @@ const Projects = () => {
   const handleMouseEnter = (projectIndex: number) => {
     setHoveredProject(projectIndex);
     
-    // Clear any existing intervals
     if (intervalRefs.current[projectIndex]) {
       clearInterval(intervalRefs.current[projectIndex]);
     }
 
-    // Start new interval
     intervalRefs.current[projectIndex] = setInterval(() => {
       startImageTransition(projectIndex);
     }, 3000);
@@ -145,7 +141,6 @@ const Projects = () => {
   const handleMouseLeave = (projectIndex: number) => {
     setHoveredProject(null);
     
-    // Clear intervals and timeouts
     if (intervalRefs.current[projectIndex]) {
       clearInterval(intervalRefs.current[projectIndex]);
     }
@@ -153,7 +148,6 @@ const Projects = () => {
       clearTimeout(transitionTimeoutRefs.current[projectIndex]);
     }
 
-    // Reset states
     setActiveImageIndex(prev => {
       const newIndexes = [...prev];
       newIndexes[projectIndex] = 0;
@@ -191,120 +185,119 @@ const Projects = () => {
         </motion.div>
 
         <div className="space-y-24">
-          {projectsData.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              {/* Decorative Elements */}
-              <div className="absolute -top-8 -left-8 w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-20 blur-2xl" />
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 opacity-20 blur-2xl" />
+          {projectsData.map((project, index) => {
+            const currentImageSrc = project.images[activeImageIndex[index]];
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="absolute -top-8 -left-8 w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-20 blur-2xl" />
+                <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 opacity-20 blur-2xl" />
 
-              <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
-                  {/* Project Image */}
-                  <div 
-                    className="relative h-64 lg:h-96 rounded-xl overflow-hidden group cursor-pointer"
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={() => handleMouseLeave(index)}
-                    onClick={() => handleImageClick(project.images[activeImageIndex[index]], `${project.name} - Image ${activeImageIndex[index] + 1}`)}
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center bg-gray-800 dark:bg-gray-900 transition-colors duration-300 group-hover:bg-white">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.images[activeImageIndex[index]]}
-                          alt={`${project.name} - Image ${activeImageIndex[index] + 1}`}
-                          fill
-                          className={`object-contain transition-all duration-500 ${
-                            isTransitioning[index] ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
-                          } group-hover:scale-105`}
-                        />
+                <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                    <div 
+                      className="relative h-64 lg:h-96 rounded-xl overflow-hidden group cursor-pointer"
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={() => handleMouseLeave(index)}
+                      onClick={() => currentImageSrc && handleImageClick(currentImageSrc, `${project.name} - Image ${activeImageIndex[index] + 1}`)}
+                    >
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-800 dark:bg-gray-900 transition-colors duration-300 group-hover:bg-white">
+                        <div className="relative w-full h-full">
+                          {currentImageSrc && (
+                            <Image
+                              src={currentImageSrc}
+                              alt={`${project.name} - Image ${activeImageIndex[index] + 1}`}
+                              fill
+                              className={`object-contain transition-all duration-500 ${
+                                isTransitioning[index] ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                              } group-hover:scale-105`}
+                            />
+                          )}
+                        </div>
                       </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
 
-                  {/* Project Details */}
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                      {project.name}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">
-                      {project.description}
-                    </p>
-                    
-                    {/* Project Links */}
-                    <div className="flex gap-4 mb-6">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                        >
-                          <FaGithub className="text-xl" />
-                          <span>View GitHub</span>
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg hover:from-orange-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                        >
-                          <FaExternalLinkAlt className="text-xl" />
-                          <span>Live Demo</span>
-                        </a>
-                      )}
-                    </div>
-                    
-                    {/* Contributions */}
-                    {project.contributions && (
-                      <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                          My Contributions
-                        </h4>
-                        <ul className="space-y-2">
-                          {project.contributions.map((contribution, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <span className="text-purple-600 dark:text-purple-400 mr-2">•</span>
-                              <span className="text-gray-600 dark:text-gray-300">{contribution}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                        Technologies Used
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 text-sm bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-600 dark:text-purple-400 rounded-full"
+                    <div className="flex flex-col justify-center">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                        {project.name}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-6">
+                        {project.description}
+                      </p>
+                      
+                      <div className="flex gap-4 mb-6">
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                           >
-                            {tech}
-                          </span>
-                        ))}
+                            <FaGithub className="text-xl" />
+                            <span>View GitHub</span>
+                          </a>
+                        )}
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg hover:from-orange-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                          >
+                            <FaExternalLinkAlt className="text-xl" />
+                            <span>Live Demo</span>
+                          </a>
+                        )}
+                      </div>
+                      
+                      {project.contributions && (
+                        <div className="mb-6">
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                            My Contributions
+                          </h4>
+                          <ul className="space-y-2">
+                            {project.contributions.map((contribution, idx) => (
+                              <li key={idx} className="flex items-start">
+                                <span className="text-purple-600 dark:text-purple-400 mr-2">•</span>
+                                <span className="text-gray-600 dark:text-gray-300">{contribution}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                          Technologies Used
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 text-sm bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-600 dark:text-purple-400 rounded-full"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Modal */}
       <Modal
         isOpen={!!selectedImage}
         onClose={() => setSelectedImage(null)}
