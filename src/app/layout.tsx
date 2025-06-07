@@ -53,6 +53,7 @@ export default function RootLayout({
             "chara",
             "chera", 
             "cara"
+            "cara"
           ],
           url: 'https://www.linkedin.com/in/chera-mihiretu-a267472a2/',
           jobTitle: 'Software Engineer',
