@@ -52,7 +52,7 @@ export default function RootLayout({
             "carra",
             "chara",
             "chera", 
-            "cara"
+            "cara",
             "cara"
           ],
           url: 'https://www.linkedin.com/in/chera-mihiretu-a267472a2/',
