@@ -83,71 +83,73 @@ const projectsData = [
 ];
 
 const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number[]>([]);
   const [isTransitioning, setIsTransitioning] = useState<boolean[]>([]);
   const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
+  const [gifPlaying, setGifPlaying] = useState<boolean[]>([]);
   const intervalRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
   const transitionTimeoutRefs = useRef<{[key: number]: NodeJS.Timeout}>({});
   
   useEffect(() => {
     setActiveImageIndex(new Array(projectsData.length).fill(0));
     setIsTransitioning(new Array(projectsData.length).fill(false));
+    setGifPlaying(new Array(projectsData.length).fill(false));
     
     return () => {
-      Object.values(intervalRefs.current).forEach(clearInterval);
-      Object.values(transitionTimeoutRefs.current).forEach(clearTimeout);
+      const currentIntervalRefs = intervalRefs.current;
+      const currentTransitionTimeoutRefs = transitionTimeoutRefs.current;
+      
+      Object.values(currentIntervalRefs).forEach(interval => clearInterval(interval));
+      Object.values(currentTransitionTimeoutRefs).forEach(timeout => clearTimeout(timeout));
     };
   }, []);
 
-  const startImageTransition = (projectIndex: number) => {
-    if (isTransitioning[projectIndex]) return;
-
-    setIsTransitioning(prev => {
-      const newTransitioning = [...prev];
-      newTransitioning[projectIndex] = true;
-      return newTransitioning;
-    });
-
-    transitionTimeoutRefs.current[projectIndex] = setTimeout(() => {
-      setActiveImageIndex(prev => {
-        const newIndexes = [...prev];
-        newIndexes[projectIndex] = (newIndexes[projectIndex] + 1) % projectsData[projectIndex].images.length;
-        return newIndexes;
-      });
-
-      transitionTimeoutRefs.current[projectIndex] = setTimeout(() => {
-        setIsTransitioning(prev => {
-          const newTransitioning = [...prev];
-          newTransitioning[projectIndex] = false;
-          return newTransitioning;
-        });
-      }, 500);
-    }, 500);
-  };
-
   const handleMouseEnter = (projectIndex: number) => {
-    setHoveredProject(projectIndex);
-    
-    if (intervalRefs.current[projectIndex]) {
-      clearInterval(intervalRefs.current[projectIndex]);
+    const currentIntervalRef = intervalRefs.current[projectIndex];
+    if (currentIntervalRef) {
+      clearInterval(currentIntervalRef);
     }
 
-    intervalRefs.current[projectIndex] = setInterval(() => {
-      startImageTransition(projectIndex);
-    }, 3000);
+    const startTransition = () => {
+      const isGif = projectsData[projectIndex].images[activeImageIndex[projectIndex]].endsWith('.gif');
+      const isGifPlaying = gifPlaying[projectIndex];
+
+      if (isGif && isGifPlaying) {
+        setTimeout(startTransition, 100);
+        return;
+      }
+
+      setIsTransitioning(prev => {
+        const newTransitioning = [...prev];
+        newTransitioning[projectIndex] = true;
+        return newTransitioning;
+      });
+
+      setTimeout(() => {
+        setActiveImageIndex(prev => {
+          const newIndexes = [...prev];
+          newIndexes[projectIndex] = (newIndexes[projectIndex] + 1) % projectsData[projectIndex].images.length;
+          return newIndexes;
+        });
+
+        setTimeout(() => {
+          setIsTransitioning(prev => {
+            const newTransitioning = [...prev];
+            newTransitioning[projectIndex] = false;
+            return newTransitioning;
+          });
+        }, 500);
+      }, 500);
+    };
+
+    intervalRefs.current[projectIndex] = setInterval(startTransition, 2000);
   };
 
   const handleMouseLeave = (projectIndex: number) => {
-    setHoveredProject(null);
-    
-    if (intervalRefs.current[projectIndex]) {
-      clearInterval(intervalRefs.current[projectIndex]);
+    const currentIntervalRef = intervalRefs.current[projectIndex];
+    if (currentIntervalRef) {
+      clearInterval(currentIntervalRef);
     }
-    if (transitionTimeoutRefs.current[projectIndex]) {
-      clearTimeout(transitionTimeoutRefs.current[projectIndex]);
-    }
-
     setActiveImageIndex(prev => {
       const newIndexes = [...prev];
       newIndexes[projectIndex] = 0;
@@ -157,6 +159,11 @@ const Projects = () => {
       const newTransitioning = [...prev];
       newTransitioning[projectIndex] = false;
       return newTransitioning;
+    });
+    setGifPlaying(prev => {
+      const newGifPlaying = [...prev];
+      newGifPlaying[projectIndex] = false;
+      return newGifPlaying;
     });
   };
 
