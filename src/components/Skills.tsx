@@ -16,12 +16,12 @@ const skillsData = [
   },
   {
     category: 'Databases & Backend',
-    skills: ['MongoDB', 'Firebase', 'PostgreSQL', 'Redis'],
+    skills: ['Golang', 'Node js', 'MongoDB', 'Firebase', 'PostgreSQL', 'Redis'],
     icon: <FaDatabase className="text-2xl text-green-400" />
   },
   {
     category: 'DevOps & CI/CD',
-    skills: ['Docker', 'GitHub Actions', 'Git', 'AWS'],
+    skills: ['AWS', 'Cloud Computing', 'Docker', 'GitHub Actions', 'Git',],
     icon: <FaServer className="text-2xl text-orange-400" />
   },
   {
