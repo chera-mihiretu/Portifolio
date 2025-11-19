@@ -1,14 +1,11 @@
 'use client';
 
 import { TypeAnimation } from 'react-type-animation';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
 import Image from 'next/image';
 
 export default function InteractivePlayground() {
-    const [isTyping, setIsTyping] = useState(true);
-
     const handleDownloadCV = () => {
         const link = document.createElement('a');
         link.href = '/assets/cv.pdf';
@@ -62,13 +59,13 @@ export default function InteractivePlayground() {
                     <div className="p-6 font-mono text-sm md:text-base min-h-[150px] text-gray-300">
                         <span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = <span className="text-purple-400">new</span> <span className="text-yellow-400">Engineer</span>({'{'}
                         <br />
-                        &nbsp;&nbsp;name: <span className="text-green-400">'Chera Mihiretu'</span>,
+                        &nbsp;&nbsp;name: <span className="text-green-400">&apos;Chera Mihiretu&apos;</span>,
                         <br />
-                        &nbsp;&nbsp;location: <span className="text-green-400">'Adama, Ethiopia'</span>,
+                        &nbsp;&nbsp;location: <span className="text-green-400">&apos;Adama, Ethiopia&apos;</span>,
                         <br />
-                        &nbsp;&nbsp;education: <span className="text-green-400">'Adama Science and Technology University'</span>,
+                        &nbsp;&nbsp;education: <span className="text-green-400">&apos;Adama Science and Technology University&apos;</span>,
                         <br />
-                        &nbsp;&nbsp;mission: <span className="text-green-400">'Building the future with code & AI'</span>
+                        &nbsp;&nbsp;mission: <span className="text-green-400">&apos;Building the future with code & AI&apos;</span>
                         <br />
                         {'}'});
                     </div>

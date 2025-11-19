@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { FaServer, FaBolt, FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaBolt } from 'react-icons/fa';
 
 export default function DynamicIsland() {
     const [status, setStatus] = useState<'idle' | 'processing' | 'success'>('idle');

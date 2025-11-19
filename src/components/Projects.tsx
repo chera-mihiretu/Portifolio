@@ -6,7 +6,21 @@ import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt, FaDownload, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Modal from './Modal';
 
-const projectsData = [
+interface Project {
+  id: string;
+  name: string;
+  status: string;
+  description: string;
+  images: string[];
+  logo: string | null;
+  technologies: string[];
+  github: string | null;
+  demo: string | null;
+  apkDownload: string | null;
+  colSpan: string;
+}
+
+const projectsData: Project[] = [
   {
     id: 'PRJ-001',
     name: 'Pill Reminder',
@@ -114,7 +128,7 @@ const projectsData = [
   }
 ];
 
-const ProjectCard = ({ project, index, onClick }: { project: any, index: number, onClick: (img: string) => void }) => {
+const ProjectCard = ({ project, index, onClick }: { project: Project, index: number, onClick: (img: string) => void }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -208,7 +222,7 @@ const ProjectCard = ({ project, index, onClick }: { project: any, index: number,
 
             {/* Image Indicators */}
             <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
-              {project.images.map((_: any, idx: number) => (
+              {project.images.map((_, idx) => (
                 <div
                   key={idx}
                   className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-[var(--accent)] w-3' : 'bg-white/30'
