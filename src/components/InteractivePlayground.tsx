@@ -151,10 +151,10 @@ export default function InteractivePlayground() {
                     className="flex flex-wrap justify-center gap-3 mb-12 max-w-4xl mx-auto"
                 >
                     {[
-                        { text: '🏆 ACPC 2025 FINALIST', delay: 0.1, bg: 'bg-[#FFE600]', text: 'text-black' },
-                        { text: '⭐ TOP GITHUB ETHIOPIA', delay: 0.2, bg: 'bg-[#FF006E]', text: 'text-white' },
-                        { text: '🚀 A2SV GRADUATE', delay: 0.3, bg: 'bg-[#0047FF]', text: 'text-white' },
-                        { text: '☁️ AWS CERTIFIED', delay: 0.4, bg: 'bg-[#00FF94]', text: 'text-black' }
+                        { text: '🏆 ACPC 2025 FINALIST', delay: 0.1, bg: 'bg-[#FFE600]', },
+                        { text: '⭐ TOP GITHUB ETHIOPIA', delay: 0.2, bg: 'bg-[#FF006E]',  },
+                        { text: '🚀 A2SV GRADUATE', delay: 0.3, bg: 'bg-[#0047FF]',},
+                        { text: '☁️ AWS CERTIFIED', delay: 0.4, bg: 'bg-[#00FF94]', }
                     ].map((badge, i) => (
                         <motion.span
                             key={i}
