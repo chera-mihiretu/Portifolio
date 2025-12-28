@@ -1,0 +1,28 @@
+# robots.txt for Chera Mihiretu Portfolio
+# Allow all search engines to crawl
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://chera-mihiretu.vercel.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 0
+
+# Allow Google Bot
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Allow Bing Bot
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# Allow Yandex Bot
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+

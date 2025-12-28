@@ -1,77 +1,92 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Archivo+Black&family=DM+Sans:wght@400;500;700;900&display=swap');
 
 :root {
-  /* The Lab (Light Mode) */
-  --background: #F2F2F2;
-  --foreground: #1A1A1A;
-  --card-bg: rgba(255, 255, 255, 0.65);
-  --card-border: rgba(255, 255, 255, 0.8);
-  --primary: #2D2D2D;
-  --accent: #0055FF;
-  --glow: rgba(0, 85, 255, 0.15);
-  --noise-opacity: 0.03;
-  --shadow-color: rgba(0, 0, 0, 0.08);
+  /* REFINED BRUTALISM PALETTE (Light Mode) */
+  --background: #FAFAFA;
+  --foreground: #0A0A0A;
+  --card-bg: #FFFFFF;
+  --card-border: #1A1A1A;
+  --primary: #0A0A0A;
+  --accent: #5B4FE9;
+  --accent-2: #2D2D2D;
+  --accent-light: #E8E6FF;
+  --shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 6px 6px 0px rgba(0, 0, 0, 0.2);
+  --border-width: 3px;
 }
 
 .dark {
-  /* The Void (Dark Mode) */
-  --background: #050505;
-  --foreground: #E0E0E0;
-  --card-bg: rgba(20, 20, 20, 0.6);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --primary: #FFFFFF;
-  --accent: #7928CA;
-  /* Electric Indigo */
-  --accent-secondary: #FF0080;
-  /* Cyberpunk Pink */
-  --glow: rgba(121, 40, 202, 0.25);
-  --noise-opacity: 0.05;
-  --shadow-color: rgba(0, 0, 0, 0.5);
+  /* REFINED BRUTALISM DARK */
+  --background: #0A0A0A;
+  --foreground: #F5F5F5;
+  --card-bg: #1A1A1A;
+  --card-border: #3A3A3A;
+  --primary: #F5F5F5;
+  --accent: #7B6FFF;
+  --accent-2: #F5F5F5;
+  --accent-light: #2A2550;
+  --shadow: 4px 4px 0px rgba(123, 111, 255, 0.3);
+  --shadow-hover: 6px 6px 0px rgba(123, 111, 255, 0.4);
+  --border-width: 3px;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-inter), sans-serif;
+  font-family: 'DM Sans', var(--font-inter), sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: none;
 }
 
-/* Advanced Glassmorphism */
+/* REFINED BRUTALISM PANELS */
 .glass-panel {
   background: var(--card-bg);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  border: var(--border-width) solid var(--card-border);
+  box-shadow: var(--shadow);
   position: relative;
-  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translate(-2px, -2px);
 }
 
 .glass-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
-  opacity: var(--noise-opacity);
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  z-index: 1;
+  display: none;
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* EXPERIMENTAL TYPOGRAPHY */
+h1, h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+h3, h4 {
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+}
+
+h5, h6 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .font-mono {
-  font-family: var(--font-mono), monospace;
+  font-family: 'Space Grotesk', var(--font-mono), monospace;
+}
+
+.font-display {
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 /* Custom Scrollbar */
@@ -148,20 +163,44 @@ h6 {
   pointer-events: none;
 }
 
-/* Utilities */
+/* REFINED UTILITIES */
 .text-gradient {
-  background: none;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: initial;
+  background: var(--accent-light);
   color: var(--accent);
+  padding: 0 0.3em;
   font-weight: 700;
+  display: inline-block;
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+}
+
+.text-gradient:hover {
+  transform: rotate(0deg);
 }
 
 .dark .text-gradient {
-  background: linear-gradient(135deg, #FFF 0%, var(--accent) 50%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.brutalist-border {
+  border: var(--border-width) solid var(--card-border);
+  box-shadow: var(--shadow);
+}
+
+.brutalist-border-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brutalist-border-hover:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translate(-2px, -2px);
+}
+
+.rotate-brutal {
+  transform: rotate(-0.5deg);
+}
+
+.rotate-brutal-alt {
+  transform: rotate(0.5deg);
 }

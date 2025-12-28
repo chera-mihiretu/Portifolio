@@ -8,51 +8,66 @@ import { FaTrophy, FaMedal, FaAws, FaGlobeAfrica, FaExternalLinkAlt, FaCloud } f
 
 const achievementsData = [
   {
+    title: 'ACPC 2025 Finalist',
+    position: 'Qualified Team',
+    description: 'Qualified for the prestigious Arab and African Collegiate Programming Contest (ACPC) 2025, representing Ethiopia among the top competitive programming teams in Africa and the Middle East.',
+    icon: <FaTrophy className="text-4xl md:text-5xl" />,
+    date: '2025',
+    category: 'International Contest',
+    image: '/assets/achievement/icpc-2.png',
+    color: 'bg-[#FFE600] text-black'
+  },
+  {
+    title: 'Top Ethiopia GitHub Contributor',
+    position: 'National Recognition',
+    description: 'Recognized as one of the top GitHub contributors in Ethiopia, with significant open-source contributions and active involvement in the Ethiopian developer community.',
+    icon: <FaGlobeAfrica className="text-4xl md:text-5xl" />,
+    date: '2024-2025',
+    category: 'Open Source',
+    image: '/assets/achievement/icpc.png',
+    color: 'bg-[#FF006E] text-white'
+  },
+  {
     title: 'AWS Solutions Architect',
     position: 'Associate (SAA-C03)',
     description: 'Validated expertise in designing distributed systems on AWS. Skilled in architecture, security, and cost-optimization.',
-    icon: <FaAws className="text-orange-400 text-3xl" />,
+    icon: <FaAws className="text-4xl md:text-5xl" />,
     date: '2024',
     category: 'Certification',
     image: '/assets/achievement/saa.png',
-    credly: 'https://www.credly.com/badges/51dc40c6-2d86-41d2-ad0f-9cf46c52b7d5/public_url'
+    credly: 'https://www.credly.com/badges/51dc40c6-2d86-41d2-ad0f-9cf46c52b7d5/public_url',
+    color: 'bg-[#0047FF] text-white'
   },
   {
     title: 'AWS Cloud Practitioner',
     position: 'Certified (CLF-C02)',
     description: 'Foundational understanding of AWS Cloud concepts, security, and compliance.',
-    icon: <FaCloud className="text-blue-400 text-3xl" />,
+    icon: <FaCloud className="text-4xl md:text-5xl" />,
     date: '2024',
     category: 'Certification',
     image: '/assets/achievement/cp.png',
-    credly: 'https://www.credly.com/badges/342ba2cc-278e-4244-9bbb-638d3e2972ec/public_url'
-  },
-  {
-    title: 'ACPC Qualification',
-    position: 'Qualified',
-    description: 'Qualified for the prestigious Arab and African Collegiate Programming Contest (ACPC), representing the top tier of competitive programmers.',
-    icon: <FaGlobeAfrica className="text-green-400 text-3xl" />,
-    date: '2024',
-    category: 'International Contest',
-    image: '/assets/achievement/icpc-2.png'
+    credly: 'https://www.credly.com/badges/342ba2cc-278e-4244-9bbb-638d3e2972ec/public_url',
+    color: 'bg-[#00FF94] text-black'
   },
   {
     title: 'A2SV Hackathon',
     position: 'Top 8',
     description: 'Built a Localized AI project supporting Ethiopian languages with LLMs.',
-    icon: <FaTrophy className="text-yellow-400 text-3xl" />,
+    icon: <FaTrophy className="text-4xl md:text-5xl" />,
     date: '2024',
     category: 'Hackathon',
-    image: '/assets/achievement/a2sv_hackathon.jpg'
+    image: '/assets/achievement/a2sv_hackathon.jpg',
+    color: 'bg-[#FFE600] text-black'
   },
   {
     title: 'ICPC Ethiopian Collegiate',
     position: '12th Place',
     description: 'Ranked 12th nationwide in competitive programming contest.',
-    icon: <FaMedal className="text-purple-400 text-3xl" />,
+    icon: <FaMedal className="text-4xl md:text-5xl" />,
     date: '2024',
     category: 'Competitive Programming',
-    image: '/assets/achievement/icpc.png'
+    image: '/assets/achievement/icpc.png',
+    color: 'bg-[#0047FF] text-white'
   }
 ];
 
@@ -60,88 +75,123 @@ export default function Achievements() {
   const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
 
   return (
-    <section id="achievements" className="py-32 px-4 relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="achievements" className="py-32 px-4 md:px-8 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-20 right-10 w-80 h-80 bg-[#FF006E] opacity-20 rotate-12 -z-10" />
+      <div className="absolute bottom-20 left-20 w-60 h-60 border-[10px] border-black opacity-10 -z-10" />
+
+      <div className="max-w-[1600px] mx-auto">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-24"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Honors & <span className="text-gradient">Awards</span>
+          <h2 className="text-6xl md:text-8xl lg:text-9xl font-display mb-6 leading-none">
+            HONORS &
+            <br />
+            <span className="bg-[#FFE600] text-black px-6 py-2 inline-block -rotate-2">AWARDS</span>
           </h2>
-          <p className="text-[var(--foreground)]/60 max-w-2xl mx-auto text-lg">
-            Recognized for excellence in cloud computing and algorithmic problem solving.
+          <div className="h-3 bg-black w-72 mt-8 mb-6" />
+          <p className="text-xl font-bold uppercase tracking-wide max-w-3xl">
+            RECOGNIZED FOR EXCELLENCE IN CLOUD COMPUTING AND ALGORITHMIC PROBLEM SOLVING.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {achievementsData.map((achievement, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="glass-panel rounded-2xl overflow-hidden group hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.2)] transition-all duration-500 flex flex-col"
-            >
-              <div className="relative h-48 w-full overflow-hidden flex-shrink-0">
-                <Image
-                  src={achievement.image}
-                  alt={achievement.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] via-transparent to-transparent" />
-
-                <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 text-xs font-bold rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white">
-                    {achievement.date}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 relative flex-grow flex flex-col">
-                <div className="absolute -top-8 left-6 w-14 h-14 rounded-xl bg-[var(--card-bg)] backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-lg">
-                  {achievement.icon}
-                </div>
-
-                <div className="mt-4 flex-grow">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-bold pr-2">{achievement.title}</h3>
-                    <span className="text-xs font-mono text-[var(--accent)] whitespace-nowrap mt-1">
-                      {achievement.position}
-                    </span>
+        {/* Achievements Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {achievementsData.map((achievement, index) => {
+            const rotate = index % 5 === 0 ? 'rotate-1' : index % 5 === 1 ? '-rotate-1' : index % 5 === 2 ? 'rotate-2' : index % 5 === 3 ? '-rotate-2' : 'rotate-0';
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40, rotate: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                className={`${rotate} hover:rotate-0 transition-all duration-300`}
+              >
+                <div className="bg-[var(--card-bg)] border-[6px] border-black shadow-[10px_10px_0px_black] hover:shadow-[15px_15px_0px_black] hover:translate-x-[-5px] hover:translate-y-[-5px] transition-all h-full flex flex-col">
+                  {/* Image */}
+                  <div 
+                    className="relative h-64 w-full overflow-hidden border-b-[6px] border-black cursor-pointer group"
+                    onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
+                  >
+                    <Image
+                      src={achievement.image}
+                      alt={achievement.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    
+                    {/* Date Badge */}
+                    <div className="absolute top-4 right-4 bg-black text-[#FFE600] px-4 py-2 font-bold text-xs border-[3px] border-black shadow-[4px_4px_0px_var(--accent)]">
+                      {achievement.date}
+                    </div>
                   </div>
-                  <p className="text-[var(--foreground)]/60 text-sm leading-relaxed mb-4">
-                    {achievement.description}
-                  </p>
 
-                  {/* Credly Link */}
-                  {achievement.credly && (
+                  {/* Content */}
+                  <div className="p-6 flex-grow flex flex-col">
+                    {/* Icon Header */}
+                    <div className={`${achievement.color} p-4 mb-6 border-[4px] border-black shadow-[6px_6px_0px_black] flex items-center justify-center -mt-12 mx-6 relative z-10`}>
+                      {achievement.icon}
+                    </div>
+
+                    {/* Title & Position */}
+                    <h3 className="text-2xl md:text-3xl font-display mb-2 leading-tight">
+                      {achievement.title}
+                    </h3>
+                    <p className="text-sm font-bold uppercase tracking-wider mb-4 opacity-70">
+                      {achievement.position}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-sm leading-relaxed mb-4 flex-grow">
+                      {achievement.description}
+                    </p>
+
+                    {/* Category Tag */}
                     <div className="mb-4">
+                      <span className="bg-black text-white px-3 py-1 text-xs font-bold uppercase tracking-wider border-[3px] border-black shadow-[3px_3px_0px_var(--accent)] inline-block">
+                        {achievement.category}
+                      </span>
+                    </div>
+
+                    {/* Credly Link */}
+                    {achievement.credly && (
                       <a
                         href={achievement.credly}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded bg-[#FF9900]/10 text-[#FF9900] border border-[#FF9900]/20 hover:bg-[#FF9900]/20 transition-colors"
+                        className="flex items-center gap-2 px-4 py-3 bg-[#FF9900] text-white font-bold uppercase text-xs tracking-wider border-[4px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
                       >
-                        <FaAws /> Verify on Credly <FaExternalLinkAlt className="text-[10px]" />
+                        <FaAws className="text-lg" />
+                        VERIFY ON CREDLY
+                        <FaExternalLinkAlt className="text-xs ml-auto" />
                       </a>
-                    </div>
-                  )}
-                </div>
+                    )}
 
-                <button
-                  onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
-                  className="text-sm font-medium text-[var(--foreground)]/80 hover:text-[var(--accent)] transition-colors flex items-center gap-2 mt-auto pt-4 border-t border-white/5"
-                >
-                  View Certificate <span>→</span>
-                </button>
-              </div>
-            </motion.div>
-          ))}
+                    {/* View Certificate */}
+                    {!achievement.credly && (
+                      <button
+                        onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
+                        className="flex items-center justify-between px-4 py-3 bg-white text-black font-bold uppercase text-xs tracking-wider border-[4px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
+                      >
+                        VIEW CERTIFICATE
+                        <span className="text-xl">→</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 

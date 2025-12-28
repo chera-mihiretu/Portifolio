@@ -187,8 +187,24 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 1.5 }}
                 className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl"
               >
-                Software Engineering student at Adama Science and Technology University.
+                Software Engineering student at Adama Science and Technology University. 
+                ACPC 2025 Finalist | Africa To Silicon Valley Graduate | Top Ethiopia GitHub Contributor.
               </motion.p>
+
+              {/* Achievement Badges */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 1.7 }}
+                className="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start"
+              >
+                <span className="px-3 py-1.5 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full text-xs font-semibold text-yellow-600 dark:text-yellow-300">
+                  🏆 ACPC 2025 Finalist
+                </span>
+                <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full text-xs font-semibold text-blue-600 dark:text-blue-300">
+                  🚀 A2SV Graduate
+                </span>
+              </motion.div>
 
               {/* Action Buttons */}
               <motion.div
@@ -273,7 +289,7 @@ const Hero = () => {
               >
                 <Image
                   src="/assets/me.png"
-                  alt="Ethiopian Software Engineer"
+                  alt="Chera Mihiretu - Ethiopian Software Engineer, ACPC 2025 Finalist, Top GitHub Contributor Ethiopia, ASTU Student"
                   fill
                   className="object-cover"
                   priority
