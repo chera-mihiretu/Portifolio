@@ -138,7 +138,7 @@ const projectsData: Project[] = [
     ],
     logo: '/assets/my-library/my-lab-logo.jpg',
     technologies: ['Flutter', 'Clean Architecture', 'TDD'],
-    github: 'https://github.com/chera-mihiretu/my-library',
+    github: 'https://github.com/chera-mihiretu/my_book',
     demo: null,
     apkDownload: null,
     colSpan: "col-span-1",
