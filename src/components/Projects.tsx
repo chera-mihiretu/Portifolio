@@ -27,6 +27,7 @@ const projectsData: Project[] = [
     status: 'Deployed',
     description: 'Mobile app for medication management with clean architecture and offline support.',
     images: [
+      '/assets/pill-reminder/pill-cover.png',
       '/assets/pill-reminder/landing-page.jpg',
       '/assets/pill-reminder/medicine-detail-page.jpg',
       '/assets/pill-reminder/edit-medicine.jpg',
@@ -62,6 +63,7 @@ const projectsData: Project[] = [
     status: 'Live',
     description: 'Campus platform for study materials and job opportunities. Microservices architecture.',
     images: [
+      '/assets/iknow/iknow-cover.png',
       '/assets/iknow/Screenshot from 2025-08-15 01-12-09.png',
       '/assets/iknow/Screenshot from 2025-08-15 01-11-29.png'
     ],
@@ -78,6 +80,7 @@ const projectsData: Project[] = [
     status: 'Experimental',
     description: 'Thread-pooled real-time prediction with GUI.',
     images: [
+      '/assets/projects/number_recognition/num-rec-cover.png',
       '/assets/projects/number_recognition/1.png',
       '/assets/projects/number_recognition/2.gif'
     ],
