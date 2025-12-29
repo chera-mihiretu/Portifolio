@@ -87,7 +87,7 @@ export default function Education() {
                           />
                         </div>
                       </div>
-                    </div>
+                </div>
 
                     {/* Content Section */}
                     <div className={`${isEven ? 'md:order-2' : 'md:order-1'} w-full md:w-2/3 p-8`}>
@@ -95,8 +95,8 @@ export default function Education() {
                       <div className="inline-block mb-4">
                         <span className={`${edu.color} px-4 py-2 text-xs font-black uppercase tracking-widest border-[4px] border-black shadow-[4px_4px_0px_black] inline-block`}>
                           ● {edu.status}
-                        </span>
-                      </div>
+                    </span>
+                  </div>
 
                       {/* Institution Name */}
                       <h3 className="text-3xl md:text-4xl font-display mb-3 leading-tight">
@@ -110,8 +110,8 @@ export default function Education() {
 
                       {/* Details */}
                       <p className="text-base leading-relaxed">
-                        {edu.details}
-                      </p>
+                    {edu.details}
+                  </p>
 
                       {/* Decorative Element */}
                       <div className="mt-6 flex gap-2">

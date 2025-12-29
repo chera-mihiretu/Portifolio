@@ -74,28 +74,28 @@ export default function Skills() {
             const rotate = index % 4 === 0 ? 'rotate-[0.5deg]' : index % 4 === 1 ? '-rotate-[0.5deg]' : index % 4 === 2 ? 'rotate-[0.3deg]' : '-rotate-[0.3deg]';
             
             return (
-              <motion.div
-                key={index}
+            <motion.div
+              key={index}
                 initial={{ opacity: 0, y: 40, rotate: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+              viewport={{ once: true }}
                 transition={{ 
                   delay: index * 0.1,
                   type: "spring",
                   stiffness: 80
                 }}
                 className={`${rotate} hover:rotate-0 transition-transform duration-300`}
-              >
+            >
                 <div className="bg-[var(--card-bg)] border-[3px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all duration-300 h-full">
                   {/* Category Header with Icon */}
                   <div className={`${category.color} p-5 border-b-[3px] border-black flex items-center gap-3`}>
                     <div className="flex-shrink-0">
-                      {category.icon}
-                    </div>
+                  {category.icon}
+                </div>
                     <h3 className="text-base md:text-lg font-black uppercase leading-tight">
                       {category.category}
                     </h3>
-                  </div>
+              </div>
 
                   {/* Skills Tags */}
                   <div className="p-5 flex flex-wrap gap-2">
@@ -108,17 +108,17 @@ export default function Skills() {
                       ];
                       
                       return (
-                        <span
-                          key={i}
+                  <span
+                    key={i}
                           className={`${tagColors[i % tagColors.length]} px-3 py-1.5 text-xs font-bold uppercase tracking-wider border-[2px] shadow-[2px_2px_0px_black] hover:shadow-[3px_3px_0px_black] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-default inline-block`}
-                        >
-                          {skill}
-                        </span>
+                  >
+                    {skill}
+                  </span>
                       );
                     })}
                   </div>
-                </div>
-              </motion.div>
+              </div>
+            </motion.div>
             );
           })}
         </div>

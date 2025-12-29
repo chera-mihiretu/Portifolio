@@ -88,7 +88,7 @@ export default function Contact() {
               </p>
               <p className="text-xs font-mono mt-2 opacity-80">
                 ENGINEERED WITH NEXT.JS & TAILWIND
-              </p>
+            </p>
             </div>
           </div>
         </motion.div>

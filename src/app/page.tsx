@@ -9,10 +9,19 @@ import Education from '@/components/Education';
 import Achievements from '@/components/Achievements';
 import Contact from '@/components/Contact';
 import Image from 'next/image';
+import { useState } from 'react';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
+  const [currentImage, setCurrentImage] = useState('/assets/me.png');
+  
+  const toggleImage = () => {
+    setCurrentImage(prev => 
+      prev === '/assets/me.png' ? '/assets/me-1.png' : '/assets/me.png'
+    );
+  };
+
   return (
     <main className="min-h-screen relative overflow-x-hidden selection:bg-[var(--accent)] selection:text-white">
       <NeuralCursor />
@@ -61,29 +70,51 @@ export default function Home() {
             {/* Main Image Container */}
             <div className="relative z-10">
               <motion.div
+                onClick={toggleImage}
                 whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="relative w-[400px] h-[500px] border-[6px] border-black shadow-[12px_12px_0px_black] bg-[var(--card-bg)] overflow-hidden"
+                className="relative w-[400px] h-[500px] border-[6px] border-black shadow-[12px_12px_0px_black] bg-[var(--card-bg)] overflow-hidden cursor-pointer"
               >
                 {/* Colored accent bars */}
-                <div className="absolute top-0 left-0 w-full h-4 flex">
+                <div className="absolute top-0 left-0 w-full h-4 flex z-10">
                   <div className="flex-1 bg-[#FFE600]" />
                   <div className="flex-1 bg-[#FF006E]" />
                   <div className="flex-1 bg-[#0047FF]" />
                   <div className="flex-1 bg-[#00FF94]" />
                 </div>
                 
-                {/* Image */}
-                <Image
-                  src="/assets/me.png"
-                  alt="Chera Mihiretu - ACPC 2025 Finalist, Top Ethiopia GitHub Contributor"
-                  fill
-                  className="object-cover object-center pt-4"
-                  priority
-                />
+                {/* Image with AnimatePresence for smooth transition */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentImage}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={currentImage}
+                      alt="Chera Mihiretu - ACPC 2025 Finalist, Top Ethiopia GitHub Contributor"
+                      fill
+                      className="object-cover object-center pt-4"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Click indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider backdrop-blur-sm pointer-events-none z-20"
+                >
+                  Click to Toggle
+                </motion.div>
                 
                 {/* Bottom label */}
-                <div className="absolute bottom-0 left-0 right-0 bg-black text-[#FFE600] py-3 px-4 border-t-[6px] border-black">
+                <div className="absolute bottom-0 left-0 right-0 bg-black text-[#FFE600] py-3 px-4 border-t-[6px] border-black z-10">
                   <p className="font-mono text-xs font-bold text-center uppercase tracking-wider">
                     CHERA MIHIRETU
                   </p>
@@ -100,7 +131,7 @@ export default function Home() {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="absolute -bottom-6 -right-6 bg-[#FF006E] text-white px-6 py-3 border-[4px] border-black shadow-[6px_6px_0px_black] font-black text-xs uppercase tracking-wider rotate-3"
+                className="absolute -bottom-6 -right-6 bg-[#FF006E] text-white px-6 py-3 border-[4px] border-black shadow-[6px_6px_0px_black] font-black text-xs uppercase tracking-wider rotate-3 z-50"
               >
                 Lucky 
               </motion.div>

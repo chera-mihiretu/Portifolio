@@ -105,11 +105,11 @@ export default function Achievements() {
             const rotate = index % 5 === 0 ? 'rotate-1' : index % 5 === 1 ? '-rotate-1' : index % 5 === 2 ? 'rotate-2' : index % 5 === 3 ? '-rotate-2' : 'rotate-0';
             
             return (
-              <motion.div
-                key={index}
+            <motion.div
+              key={index}
                 initial={{ opacity: 0, y: 40, rotate: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
                 transition={{ 
                   delay: index * 0.1,
                   type: "spring",
@@ -123,25 +123,25 @@ export default function Achievements() {
                     className="relative h-64 w-full overflow-hidden border-b-[6px] border-black cursor-pointer group"
                     onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
                   >
-                    <Image
-                      src={achievement.image}
-                      alt={achievement.title}
-                      fill
+                <Image
+                  src={achievement.image}
+                  alt={achievement.title}
+                  fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    
+                />
+
                     {/* Date Badge */}
                     <div className="absolute top-4 right-4 bg-black text-[#FFE600] px-4 py-2 font-bold text-xs border-[3px] border-black shadow-[4px_4px_0px_var(--accent)]">
-                      {achievement.date}
-                    </div>
-                  </div>
+                    {achievement.date}
+                </div>
+              </div>
 
                   {/* Content */}
                   <div className="p-6 flex-grow flex flex-col">
                     {/* Icon Header */}
                     <div className={`${achievement.color} p-4 mb-6 border-[4px] border-black shadow-[6px_6px_0px_black] flex items-center justify-center -mt-12 mx-6 relative z-10`}>
-                      {achievement.icon}
-                    </div>
+                  {achievement.icon}
+                </div>
 
                     {/* Title & Position */}
                     <h3 className="text-2xl md:text-3xl font-display mb-2 leading-tight">
@@ -153,8 +153,8 @@ export default function Achievements() {
 
                     {/* Description */}
                     <p className="text-sm leading-relaxed mb-4 flex-grow">
-                      {achievement.description}
-                    </p>
+                    {achievement.description}
+                  </p>
 
                     {/* Category Tag */}
                     <div className="mb-4">
@@ -175,21 +175,21 @@ export default function Achievements() {
                         VERIFY ON CREDLY
                         <FaExternalLinkAlt className="text-xs ml-auto" />
                       </a>
-                    )}
+                  )}
 
                     {/* View Certificate */}
                     {!achievement.credly && (
-                      <button
-                        onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
+                <button
+                  onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
                         className="flex items-center justify-between px-4 py-3 bg-white text-black font-bold uppercase text-xs tracking-wider border-[4px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
-                      >
+                >
                         VIEW CERTIFICATE
                         <span className="text-xl">→</span>
-                      </button>
+                </button>
                     )}
                   </div>
-                </div>
-              </motion.div>
+              </div>
+            </motion.div>
             );
           })}
         </div>
