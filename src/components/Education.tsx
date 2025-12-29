@@ -50,7 +50,7 @@ export default function Education() {
             <br />
             <span className="bg-black text-[#FFE600] px-6 py-2 inline-block rotate-2">BASE</span>
           </h2>
-          <div className="h-3 bg-black w-64 ml-auto mt-8" />
+          <div className="h-3 bg-[#4A4A4A] w-64 ml-auto mt-8" />
         </motion.div>
 
         {/* Education Cards - Creative Layout */}

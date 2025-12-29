@@ -358,7 +358,7 @@ export default function Projects() {
               <br />
               <span className="inline-block bg-[#FFE600] text-black px-5 py-2 -rotate-1 ml-0 md:ml-8">MODULES</span>
             </h2>
-            <div className="h-2 bg-black w-full mt-4" />
+            <div className="h-2 bg-[#4A4A4A] w-full mt-4" />
           </div>
           <p className="text-base md:text-lg font-bold mt-6 max-w-2xl uppercase tracking-wide opacity-70">
             Deploying scalable solutions across the digital frontier.

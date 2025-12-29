@@ -52,7 +52,7 @@ export default function Contact() {
             </span>
           </h2>
           
-          <div className="h-3 bg-black w-full max-w-md mx-auto mb-12" />
+          <div className="h-3 bg-[#4A4A4A] w-full max-w-md mx-auto mb-12" />
 
           <p className="text-xl md:text-2xl font-bold mb-16 max-w-3xl mx-auto uppercase tracking-wide">
             WHETHER YOU HAVE A QUESTION, A PROJECT IDEA, OR JUST WANT TO SAY HI, I&apos;M ALWAYS OPEN TO CONNECTING.
@@ -86,9 +86,7 @@ export default function Contact() {
               <p className="text-sm font-bold font-mono uppercase tracking-wider">
                 © {new Date().getFullYear()} CHERA MIHIRETU
               </p>
-              <p className="text-xs font-mono mt-2 opacity-80">
-                ENGINEERED WITH NEXT.JS & TAILWIND
-            </p>
+              
             </div>
           </div>
         </motion.div>

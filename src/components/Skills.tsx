@@ -62,7 +62,7 @@ export default function Skills() {
             <br />
             <span className="bg-black text-[#FFE600] px-5 py-2 inline-block rotate-[0.5deg] mt-2">ARSENAL</span>
           </h2>
-          <div className="h-2 bg-black w-48 mt-4" />
+          <div className="h-2 bg-[#4A4A4A] w-48 mt-4" />
           <p className="text-base font-bold mt-4 uppercase tracking-wide opacity-70">
             Core competencies and specialized technologies.
           </p>
