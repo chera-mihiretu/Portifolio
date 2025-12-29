@@ -202,7 +202,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project, index: num
         )}
 
         {/* Project ID - Corner */}
-        <div className="absolute top-0 left-0 bg-black text-[#FFE600] px-3 py-1.5 font-mono font-bold text-[10px] tracking-wider z-20 border-b-[3px] border-r-[3px] border-black">
+        <div className="absolute top-0 left-0 bg-black dark:bg-[#2A2A2A] text-[#FFE600] px-3 py-1.5 font-mono font-bold text-[10px] tracking-wider z-20 border-b-[3px] border-r-[3px] border-[#1A1A1A] dark:border-[#4A4A4A]">
           {project.id}
         </div>
 
@@ -286,7 +286,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project, index: num
               return (
                 <span
                   key={i}
-                  className={`${colors[i % colors.length]} px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider border-[2px] border-black shadow-[2px_2px_0px_black] hover:shadow-[3px_3px_0px_black] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all`}
+                  className={`${colors[i % colors.length]} px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[2px_2px_0px_rgba(0,0,0,0.3)] dark:shadow-[2px_2px_0px_rgba(123,111,255,0.2)] hover:shadow-[3px_3px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[3px_3px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all`}
                 >
                   {tech}
                 </span>
@@ -301,7 +301,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project, index: num
                 href={project.github} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-2 px-5 py-2.5 bg-black text-white border-[2px] border-black hover:bg-[#FFE600] hover:text-black font-bold uppercase text-xs tracking-wider shadow-[3px_3px_0px_black] hover:shadow-[5px_5px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 bg-black dark:bg-[#2A2A2A] text-white border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A] hover:bg-[#FFE600] hover:text-black font-bold uppercase text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,0.3)] dark:shadow-[3px_3px_0px_rgba(123,111,255,0.2)] hover:shadow-[5px_5px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[5px_5px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
               >
                 <FaGithub className="text-sm" />
                 CODE
@@ -312,7 +312,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project, index: num
                 href={project.demo} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#0047FF] text-white border-[2px] border-black font-bold uppercase text-xs tracking-wider shadow-[3px_3px_0px_black] hover:shadow-[5px_5px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#0047FF] text-white border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A] font-bold uppercase text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,0.3)] dark:shadow-[3px_3px_0px_rgba(123,111,255,0.2)] hover:shadow-[5px_5px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[5px_5px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
               >
                 <FaExternalLinkAlt className="text-sm" />
                 LIVE
@@ -322,7 +322,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project, index: num
               <a 
                 href={project.apkDownload} 
                 download 
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#FF006E] text-white border-[2px] border-black font-bold uppercase text-xs tracking-wider shadow-[3px_3px_0px_black] hover:shadow-[5px_5px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#FF006E] text-white border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A] font-bold uppercase text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,0.3)] dark:shadow-[3px_3px_0px_rgba(123,111,255,0.2)] hover:shadow-[5px_5px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[5px_5px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
               >
                 <FaDownload className="text-sm" />
                 APK

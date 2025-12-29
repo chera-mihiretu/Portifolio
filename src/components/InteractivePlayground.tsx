@@ -118,7 +118,7 @@ export default function InteractivePlayground() {
                             ease: "easeInOut"
                         }}
                     />
-                    <div className="relative bg-[#FFE600] text-black px-8 py-4 border-[3px] border-black shadow-[6px_6px_0px_black] inline-block">
+                    <div className="relative bg-[#FFE600] text-black px-8 py-4 border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[6px_6px_0px_rgba(0,0,0,0.3)] dark:shadow-[6px_6px_0px_rgba(123,111,255,0.2)] inline-block">
                         <TypeAnimation
                             sequence={[
                                 'ACPC 2025 FINALIST',
@@ -166,7 +166,7 @@ export default function InteractivePlayground() {
                                 boxShadow: "5px 5px 0px black",
                                 transition: { duration: 0.2 }
                             }}
-                            className={`${badge.bg} ${badge.text} px-5 py-2 text-xs md:text-sm font-bold uppercase border-[3px] border-black shadow-[3px_3px_0px_black] transition-all cursor-default`}
+                            className={`${badge.bg} ${badge.text} px-5 py-2 text-xs md:text-sm font-bold uppercase border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[3px_3px_0px_rgba(0,0,0,0.3)] dark:shadow-[3px_3px_0px_rgba(123,111,255,0.2)] transition-all cursor-default`}
                             style={{ rotate: `${(i % 2 === 0 ? 0.5 : -0.5)}deg` }}
                         >
                             {badge.text}
@@ -184,22 +184,22 @@ export default function InteractivePlayground() {
                     {/* Glow Effect */}
                     <div className="absolute inset-0 bg-[#0047FF] opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 rounded-lg" />
                     
-                    <div className="relative bg-black text-[#00FF94] border-[3px] border-black shadow-[6px_6px_0px_black] group-hover:shadow-[8px_8px_0px_black] group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] transition-all duration-300">
+                    <div className="relative bg-black dark:bg-[#1A1A1A] text-[#00FF94] border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[6px_6px_0px_rgba(0,0,0,0.3)] dark:shadow-[6px_6px_0px_rgba(123,111,255,0.2)] group-hover:shadow-[8px_8px_0px_rgba(0,0,0,0.4)] dark:group-hover:shadow-[8px_8px_0px_rgba(123,111,255,0.3)] group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] transition-all duration-300">
                         {/* Terminal Header */}
-                        <div className="flex items-center px-5 py-3 bg-[#FFE600] border-b-[3px] border-black">
+                        <div className="flex items-center px-5 py-3 bg-[#FFE600] border-b-[3px] border-[#1A1A1A] dark:border-[#4A4A4A]">
                             <div className="flex gap-2">
                                 <motion.div 
-                                    className="w-3 h-3 bg-[#FF006E] border-[2px] border-black"
+                                    className="w-3 h-3 bg-[#FF006E] border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A]"
                                     whileHover={{ scale: 1.3 }}
                                     transition={{ type: "spring", stiffness: 400 }}
                                 />
                                 <motion.div 
-                                    className="w-3 h-3 bg-[#0047FF] border-[2px] border-black"
+                                    className="w-3 h-3 bg-[#0047FF] border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A]"
                                     whileHover={{ scale: 1.3 }}
                                     transition={{ type: "spring", stiffness: 400 }}
                                 />
                                 <motion.div 
-                                    className="w-3 h-3 bg-black border-[2px] border-black"
+                                    className="w-3 h-3 bg-black dark:bg-[#2A2A2A] border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A]"
                                     whileHover={{ scale: 1.3 }}
                                     transition={{ type: "spring", stiffness: 400 }}
                                 />
@@ -257,7 +257,7 @@ export default function InteractivePlayground() {
                         onClick={handleDownloadCV}
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="group relative flex items-center gap-2 px-8 py-4 bg-[#FF006E] text-white font-bold uppercase text-sm tracking-wider border-[3px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] transition-all overflow-hidden"
+                        className="group relative flex items-center gap-2 px-8 py-4 bg-[#FF006E] text-white font-bold uppercase text-sm tracking-wider border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] hover:shadow-[6px_6px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[6px_6px_0px_rgba(123,111,255,0.3)] transition-all overflow-hidden"
                     >
                         <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <FaDownload className="text-base relative z-10" />
@@ -270,7 +270,7 @@ export default function InteractivePlayground() {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="group relative flex items-center gap-2 px-8 py-4 bg-black text-white font-bold uppercase text-sm tracking-wider border-[3px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] transition-all overflow-hidden"
+                        className="group relative flex items-center gap-2 px-8 py-4 bg-black dark:bg-[#2A2A2A] text-white font-bold uppercase text-sm tracking-wider border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] hover:shadow-[6px_6px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[6px_6px_0px_rgba(123,111,255,0.3)] transition-all overflow-hidden"
                     >
                         <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <FaGithub className="text-base relative z-10" />
@@ -303,7 +303,7 @@ export default function InteractivePlayground() {
                                 boxShadow: "4px 4px 0px black"
                             }}
                             whileTap={{ scale: 0.95 }}
-                            className={`flex items-center gap-2 px-6 py-3 ${platform.bg} ${platform.text} font-bold uppercase text-xs tracking-wider border-[2px] border-black shadow-[3px_3px_0px_black] transition-all`}
+                            className={`flex items-center gap-2 px-6 py-3 ${platform.bg} ${platform.text} font-bold uppercase text-xs tracking-wider border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[3px_3px_0px_rgba(0,0,0,0.3)] dark:shadow-[3px_3px_0px_rgba(123,111,255,0.2)] transition-all`}
                         >
                             <platform.icon className="text-sm" />
                             {platform.label}

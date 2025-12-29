@@ -68,7 +68,7 @@ export default function ClientTestimonials() {
                 className="relative group"
               >
                 {/* Card */}
-                <div className="border-[6px] border-black shadow-[12px_12px_0px_black] bg-[var(--background)] p-8 relative overflow-hidden transition-all">
+                <div className="border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[12px_12px_0px_rgba(0,0,0,0.3)] dark:shadow-[12px_12px_0px_rgba(123,111,255,0.2)] bg-[var(--background)] p-8 relative overflow-hidden transition-all">
                   {/* Color accent corner */}
                   <div 
                     className="absolute top-0 right-0 w-24 h-24 -mr-12 -mt-12 rotate-45 opacity-20"
@@ -119,10 +119,10 @@ export default function ClientTestimonials() {
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className="w-16 h-16 border-[4px] border-black shadow-[4px_4px_0px_black] flex items-center justify-center flex-shrink-0"
+                      className="w-16 h-16 border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] flex items-center justify-center flex-shrink-0"
                       style={{ backgroundColor: testimonial.color }}
                     >
-                      <Icon className="text-2xl text-black" />
+                      <Icon className="text-2xl text-black dark:text-white" />
                     </motion.div>
                     
                     <div>
@@ -147,7 +147,7 @@ export default function ClientTestimonials() {
                     whileInView={{ scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
                     transition={{ type: "spring", delay: 0.5 }}
-                    className="absolute bottom-4 right-4 bg-black text-white px-3 py-1.5 border-[3px] border-black text-xs font-black uppercase tracking-wider rotate-3"
+                    className="absolute bottom-4 right-4 bg-black dark:bg-[#2A2A2A] text-white px-3 py-1.5 border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] text-xs font-black uppercase tracking-wider rotate-3"
                   >
                     ✓ Verified
                   </motion.div>
@@ -165,7 +165,7 @@ export default function ClientTestimonials() {
                     ease: "easeInOut",
                     delay: index * 0.5
                   }}
-                  className="absolute -top-4 -right-4 w-8 h-8 border-[3px] border-black rotate-12 z-10"
+                  className="absolute -top-4 -right-4 w-8 h-8 border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] rotate-12 z-10"
                   style={{ backgroundColor: testimonial.color }}
                 />
               </motion.div>
@@ -188,7 +188,7 @@ export default function ClientTestimonials() {
           >
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 bg-[#FF006E] text-white px-8 py-4 border-[4px] border-black shadow-[8px_8px_0px_black] font-black text-lg uppercase tracking-wider hover:shadow-[12px_12px_0px_black] transition-all"
+              className="inline-flex items-center gap-3 bg-[#FF006E] text-white px-8 py-4 border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[8px_8px_0px_rgba(0,0,0,0.3)] dark:shadow-[8px_8px_0px_rgba(123,111,255,0.2)] font-black text-lg uppercase tracking-wider hover:shadow-[12px_12px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[12px_12px_0px_rgba(123,111,255,0.3)] transition-all"
             >
               <span>Work With Me</span>
               <span className="text-2xl">→</span>

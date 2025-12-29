@@ -97,7 +97,7 @@ export default function ProfessionalExperience() {
               >
                 <motion.div
                   whileHover={{ y: -5 }}
-                  className="border-[6px] border-black shadow-[12px_12px_0px_black] bg-[var(--card-bg)] p-0 transition-all overflow-hidden relative"
+                  className="border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[12px_12px_0px_rgba(0,0,0,0.3)] dark:shadow-[12px_12px_0px_rgba(123,111,255,0.2)] bg-[var(--card-bg)] p-0 transition-all overflow-hidden relative"
                 >
                   {/* Header Section with Logo */}
                   <div className="relative">
@@ -112,10 +112,10 @@ export default function ProfessionalExperience() {
                             <motion.div
                               animate={{ rotate: [0, 5, 0] }}
                               transition={{ duration: 3, repeat: Infinity }}
-                              className="w-12 h-12 border-[3px] border-black shadow-[4px_4px_0px_black] flex items-center justify-center flex-shrink-0"
+                              className="w-12 h-12 border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] flex items-center justify-center flex-shrink-0"
                               style={{ backgroundColor: exp.color }}
                             >
-                              <Icon className="text-2xl text-black" />
+                              <Icon className="text-2xl text-black dark:text-white" />
                             </motion.div>
                             <div>
                               <h3 className="text-3xl md:text-4xl font-black uppercase leading-tight">
@@ -128,7 +128,7 @@ export default function ProfessionalExperience() {
                             {exp.company}
                           </p>
                           
-                          <div className="flex items-center gap-2 bg-black text-white px-4 py-2 border-[3px] border-black inline-flex">
+                          <div className="flex items-center gap-2 bg-black dark:bg-[#2A2A2A] text-white px-4 py-2 border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] inline-flex">
                             <FaMapMarkerAlt />
                             <span className="font-mono text-sm font-bold">{exp.location}</span>
                           </div>
@@ -138,7 +138,7 @@ export default function ProfessionalExperience() {
                         <motion.div
                           whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
                           transition={{ duration: 0.5 }}
-                          className="relative w-40 h-40 md:w-48 md:h-48 border-[6px] border-black shadow-[8px_8px_0px_black] bg-white p-4 mx-auto md:mx-0"
+                          className="relative w-40 h-40 md:w-48 md:h-48 border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] bg-white dark:bg-[#2A2A2A] p-4 mx-auto md:mx-0"
                           style={{ 
                             boxShadow: `8px 8px 0px ${exp.color}`,
                           }}
@@ -147,12 +147,12 @@ export default function ProfessionalExperience() {
                             src={exp.logo}
                             alt={`${exp.company} logo`}
                             fill
-                            className="object-contain p-4"
+                            className="object-contain p-4 dark:invert"
                           />
                           
                           {/* Number Badge */}
                           <div 
-                            className="absolute -top-4 -left-4 w-12 h-12 border-[4px] border-black flex items-center justify-center font-black text-2xl text-black z-10"
+                            className="absolute -top-4 -left-4 w-12 h-12 border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] flex items-center justify-center font-black text-2xl text-black dark:text-white z-10"
                             style={{ backgroundColor: exp.color }}
                           >
                             0{exp.id}
@@ -162,9 +162,9 @@ export default function ProfessionalExperience() {
                       
                       {/* Decorative separator */}
                       <div className="flex gap-2 mb-6">
-                        <div className="flex-1 h-2 bg-black" />
+                        <div className="flex-1 h-2 bg-[#1A1A1A] dark:bg-[#4A4A4A]" />
                         <div className="w-8 h-2" style={{ backgroundColor: exp.color }} />
-                        <div className="w-8 h-2 bg-black" />
+                        <div className="w-8 h-2 bg-[#1A1A1A] dark:bg-[#4A4A4A]" />
                         <div className="w-8 h-2" style={{ backgroundColor: exp.color }} />
                       </div>
 
@@ -180,7 +180,7 @@ export default function ProfessionalExperience() {
                       </div>
 
                       {/* Achievements */}
-                      <div className="bg-[var(--background)] p-6 border-[4px] border-black">
+                      <div className="bg-[var(--background)] p-6 border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A]">
                         <div className="flex items-center gap-3 mb-4">
                           <div 
                             className="h-8 w-2"
@@ -202,7 +202,7 @@ export default function ProfessionalExperience() {
                             >
                               <motion.div 
                                 whileHover={{ scale: 1.5, rotate: 45 }}
-                                className="w-3 h-3 mt-1.5 flex-shrink-0 border-[2px] border-black transition-transform"
+                                className="w-3 h-3 mt-1.5 flex-shrink-0 border-[2px] border-[#1A1A1A] dark:border-[#4A4A4A] transition-transform"
                                 style={{ backgroundColor: exp.color }}
                               />
                               <span className="text-sm leading-relaxed group-hover:translate-x-1 transition-transform">
@@ -218,7 +218,7 @@ export default function ProfessionalExperience() {
                   {/* Bottom accent bar */}
                   <div className="h-3 flex">
                     <div className="flex-1" style={{ backgroundColor: exp.color }} />
-                    <div className="flex-1 bg-black" />
+                    <div className="flex-1 bg-[#1A1A1A] dark:bg-[#4A4A4A]" />
                   </div>
                 </motion.div>
               </motion.div>

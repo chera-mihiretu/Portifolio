@@ -46,7 +46,7 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 px-4 md:px-8 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-40 left-10 w-64 h-64 border-[6px] border-black rotate-12 opacity-5 -z-10" />
+      <div className="absolute top-40 left-10 w-64 h-64 border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] rotate-12 opacity-5 -z-10" />
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-[#0047FF] opacity-20 -z-10" />
 
       <div className="max-w-[1200px] mx-auto">
@@ -86,9 +86,9 @@ export default function Skills() {
                 }}
                 className={`${rotate} hover:rotate-0 transition-transform duration-300`}
             >
-                <div className="bg-[var(--card-bg)] border-[3px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all duration-300 h-full">
+                <div className="bg-[var(--card-bg)] border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] hover:shadow-[6px_6px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[6px_6px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all duration-300 h-full">
                   {/* Category Header with Icon */}
-                  <div className={`${category.color} p-5 border-b-[3px] border-black flex items-center gap-3`}>
+                  <div className={`${category.color} p-5 border-b-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] flex items-center gap-3`}>
                     <div className="flex-shrink-0">
                   {category.icon}
                 </div>
@@ -101,16 +101,16 @@ export default function Skills() {
                   <div className="p-5 flex flex-wrap gap-2">
                     {category.skills.map((skill, i) => {
                       const tagColors = [
-                        'bg-white border-black text-black',
-                        'bg-black border-black text-white',
-                        'bg-[#FFE600] border-black text-black',
-                        'bg-[#0047FF] border-black text-white'
+                        'bg-white dark:bg-[#2A2A2A] border-[#1A1A1A] dark:border-[#4A4A4A] text-black dark:text-white',
+                        'bg-black dark:bg-[#2A2A2A] border-[#1A1A1A] dark:border-[#4A4A4A] text-white',
+                        'bg-[#FFE600] border-[#1A1A1A] dark:border-[#4A4A4A] text-black',
+                        'bg-[#0047FF] border-[#1A1A1A] dark:border-[#4A4A4A] text-white'
                       ];
                       
                       return (
                   <span
                     key={i}
-                          className={`${tagColors[i % tagColors.length]} px-3 py-1.5 text-xs font-bold uppercase tracking-wider border-[2px] shadow-[2px_2px_0px_black] hover:shadow-[3px_3px_0px_black] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-default inline-block`}
+                          className={`${tagColors[i % tagColors.length]} px-3 py-1.5 text-xs font-bold uppercase tracking-wider border-[2px] shadow-[2px_2px_0px_rgba(0,0,0,0.3)] dark:shadow-[2px_2px_0px_rgba(123,111,255,0.2)] hover:shadow-[3px_3px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[3px_3px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-default inline-block`}
                   >
                     {skill}
                   </span>

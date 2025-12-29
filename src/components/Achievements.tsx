@@ -78,7 +78,7 @@ export default function Achievements() {
     <section id="achievements" className="py-32 px-4 md:px-8 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 right-10 w-80 h-80 bg-[#FF006E] opacity-20 rotate-12 -z-10" />
-      <div className="absolute bottom-20 left-20 w-60 h-60 border-[10px] border-black opacity-10 -z-10" />
+      <div className="absolute bottom-20 left-20 w-60 h-60 border-[10px] border-[#1A1A1A] dark:border-[#4A4A4A] opacity-10 -z-10" />
 
       <div className="max-w-[1600px] mx-auto">
         {/* Section Header */}
@@ -117,10 +117,10 @@ export default function Achievements() {
                 }}
                 className={`${rotate} hover:rotate-0 transition-all duration-300`}
               >
-                <div className="bg-[var(--card-bg)] border-[6px] border-black shadow-[10px_10px_0px_black] hover:shadow-[15px_15px_0px_black] hover:translate-x-[-5px] hover:translate-y-[-5px] transition-all h-full flex flex-col">
+                <div className="bg-[var(--card-bg)] border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[10px_10px_0px_rgba(0,0,0,0.3)] dark:shadow-[10px_10px_0px_rgba(123,111,255,0.2)] hover:shadow-[15px_15px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[15px_15px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-5px] hover:translate-y-[-5px] transition-all h-full flex flex-col">
                   {/* Image */}
                   <div 
-                    className="relative h-64 w-full overflow-hidden border-b-[6px] border-black cursor-pointer group"
+                    className="relative h-64 w-full overflow-hidden border-b-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] cursor-pointer group"
                     onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
                   >
                 <Image
@@ -131,7 +131,7 @@ export default function Achievements() {
                 />
 
                     {/* Date Badge */}
-                    <div className="absolute top-4 right-4 bg-black text-[#FFE600] px-4 py-2 font-bold text-xs border-[3px] border-black shadow-[4px_4px_0px_var(--accent)]">
+                    <div className="absolute top-4 right-4 bg-black dark:bg-[#2A2A2A] text-[#FFE600] px-4 py-2 font-bold text-xs border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_var(--accent)]">
                     {achievement.date}
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function Achievements() {
                   {/* Content */}
                   <div className="p-6 flex-grow flex flex-col">
                     {/* Icon Header */}
-                    <div className={`${achievement.color} p-4 mb-6 border-[4px] border-black shadow-[6px_6px_0px_black] flex items-center justify-center -mt-12 mx-6 relative z-10`}>
+                    <div className={`${achievement.color} p-4 mb-6 border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[6px_6px_0px_rgba(0,0,0,0.3)] dark:shadow-[6px_6px_0px_rgba(123,111,255,0.2)] flex items-center justify-center -mt-12 mx-6 relative z-10`}>
                   {achievement.icon}
                 </div>
 
@@ -158,7 +158,7 @@ export default function Achievements() {
 
                     {/* Category Tag */}
                     <div className="mb-4">
-                      <span className="bg-black text-white px-3 py-1 text-xs font-bold uppercase tracking-wider border-[3px] border-black shadow-[3px_3px_0px_var(--accent)] inline-block">
+                      <span className="bg-black dark:bg-[#2A2A2A] text-white px-3 py-1 text-xs font-bold uppercase tracking-wider border-[3px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[3px_3px_0px_var(--accent)] inline-block">
                         {achievement.category}
                       </span>
                     </div>
@@ -169,7 +169,7 @@ export default function Achievements() {
                         href={achievement.credly}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-3 bg-[#FF9900] text-white font-bold uppercase text-xs tracking-wider border-[4px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
+                        className="flex items-center gap-2 px-4 py-3 bg-[#FF9900] text-white font-bold uppercase text-xs tracking-wider border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] hover:shadow-[6px_6px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[6px_6px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
                       >
                         <FaAws className="text-lg" />
                         VERIFY ON CREDLY
@@ -181,7 +181,7 @@ export default function Achievements() {
                     {!achievement.credly && (
                 <button
                   onClick={() => setSelectedImage({ url: achievement.image, alt: achievement.title })}
-                        className="flex items-center justify-between px-4 py-3 bg-white text-black font-bold uppercase text-xs tracking-wider border-[4px] border-black shadow-[4px_4px_0px_black] hover:shadow-[6px_6px_0px_black] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
+                        className="flex items-center justify-between px-4 py-3 bg-white dark:bg-[#2A2A2A] text-black dark:text-white font-bold uppercase text-xs tracking-wider border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] hover:shadow-[6px_6px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[6px_6px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all mt-auto"
                 >
                         VIEW CERTIFICATE
                         <span className="text-xl">→</span>

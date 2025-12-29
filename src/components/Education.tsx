@@ -35,7 +35,7 @@ export default function Education() {
     <section id="education" className="py-32 px-4 md:px-8 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-40 left-20 w-72 h-72 bg-[#00FF94] opacity-20 -z-10" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 border-[12px] border-black rotate-45 opacity-10 -z-10" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 border-[12px] border-[#1A1A1A] dark:border-[#4A4A4A] rotate-45 opacity-10 -z-10" />
 
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
@@ -72,13 +72,13 @@ export default function Education() {
                 }}
                 className={`${rotate} hover:rotate-0 transition-all duration-300 ${isEven ? 'ml-0 md:ml-8' : 'mr-0 md:mr-8 ml-auto'} max-w-5xl`}
               >
-                <div className="bg-[var(--card-bg)] border-[6px] border-black shadow-[12px_12px_0px_black] hover:shadow-[18px_18px_0px_black] hover:translate-x-[-6px] hover:translate-y-[-6px] transition-all">
+                <div className="bg-[var(--card-bg)] border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[12px_12px_0px_rgba(0,0,0,0.3)] dark:shadow-[12px_12px_0px_rgba(123,111,255,0.2)] hover:shadow-[18px_18px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[18px_18px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-6px] hover:translate-y-[-6px] transition-all">
                   <div className="flex flex-col md:flex-row">
                     {/* Logo Section - Oversized */}
-                    <div className={`${isEven ? 'md:order-1' : 'md:order-2'} w-full md:w-1/3 p-8 md:p-12 flex items-center justify-center ${edu.color} border-b-[6px] md:border-b-0 ${isEven ? 'md:border-r-[6px]' : 'md:border-l-[6px]'} border-black relative`}>
+                    <div className={`${isEven ? 'md:order-1' : 'md:order-2'} w-full md:w-1/3 p-8 md:p-12 flex items-center justify-center ${edu.color} border-b-[6px] md:border-b-0 ${isEven ? 'md:border-r-[6px]' : 'md:border-l-[6px]'} border-[#1A1A1A] dark:border-[#4A4A4A] relative`}>
                       {/* Oversized Logo */}
                       <div className="w-48 h-48 md:w-56 md:h-56 relative -mt-16 md:mt-0">
-                        <div className="absolute inset-0 border-[6px] border-black bg-[var(--card-bg)] shadow-[8px_8px_0px_black] p-6">
+                        <div className="absolute inset-0 border-[6px] border-[#1A1A1A] dark:border-[#4A4A4A] bg-[var(--card-bg)] shadow-[8px_8px_0px_rgba(0,0,0,0.3)] dark:shadow-[8px_8px_0px_rgba(123,111,255,0.2)] p-6">
                           <Image 
                             src={edu.image} 
                             alt={edu.institution} 
@@ -93,7 +93,7 @@ export default function Education() {
                     <div className={`${isEven ? 'md:order-2' : 'md:order-1'} w-full md:w-2/3 p-8`}>
                       {/* Status Badge */}
                       <div className="inline-block mb-4">
-                        <span className={`${edu.color} px-4 py-2 text-xs font-black uppercase tracking-widest border-[4px] border-black shadow-[4px_4px_0px_black] inline-block`}>
+                        <span className={`${edu.color} px-4 py-2 text-xs font-black uppercase tracking-widest border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] dark:shadow-[4px_4px_0px_rgba(123,111,255,0.2)] inline-block`}>
                           ● {edu.status}
                     </span>
                   </div>

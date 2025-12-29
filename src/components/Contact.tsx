@@ -35,7 +35,7 @@ export default function Contact() {
     <section id="contact" className="py-32 px-4 md:px-8 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 left-10 w-80 h-80 bg-[#FFE600] opacity-20 rotate-45 -z-10" />
-      <div className="absolute bottom-40 right-20 w-60 h-60 border-[12px] border-black opacity-10 -z-10" />
+      <div className="absolute bottom-40 right-20 w-60 h-60 border-[12px] border-[#1A1A1A] dark:border-[#4A4A4A] opacity-10 -z-10" />
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <motion.div
@@ -70,7 +70,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`${social.color} p-8 border-[5px] border-black shadow-[8px_8px_0px_black] hover:shadow-[12px_12px_0px_black] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all flex flex-col items-center justify-center gap-4 group`}
+                className={`${social.color} p-8 border-[5px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[8px_8px_0px_rgba(0,0,0,0.3)] dark:shadow-[8px_8px_0px_rgba(123,111,255,0.2)] hover:shadow-[12px_12px_0px_rgba(0,0,0,0.4)] dark:hover:shadow-[12px_12px_0px_rgba(123,111,255,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all flex flex-col items-center justify-center gap-4 group`}
               >
                 {social.icon}
                 <span className="text-sm font-black uppercase tracking-wider">
@@ -81,8 +81,8 @@ export default function Contact() {
           </div>
 
           {/* Footer */}
-          <div className="border-t-[4px] border-black pt-12 mt-20">
-            <div className="bg-black text-[#FFE600] px-8 py-6 inline-block border-[4px] border-black shadow-[8px_8px_0px_var(--accent)]">
+          <div className="border-t-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] pt-12 mt-20">
+            <div className="bg-black dark:bg-[#2A2A2A] text-[#FFE600] px-8 py-6 inline-block border-[4px] border-[#1A1A1A] dark:border-[#4A4A4A] shadow-[8px_8px_0px_var(--accent)]">
               <p className="text-sm font-bold font-mono uppercase tracking-wider">
                 © {new Date().getFullYear()} CHERA MIHIRETU
               </p>
