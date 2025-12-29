@@ -108,7 +108,7 @@ export default function ClientTestimonials() {
 
                   {/* Testimonial Text */}
                   <p className="text-base leading-relaxed mb-6 relative z-10 font-medium">
-                    "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                   </p>
 
                   {/* Divider */}
@@ -195,7 +195,7 @@ export default function ClientTestimonials() {
             </a>
           </motion.div>
           <p className="mt-6 text-sm font-mono uppercase tracking-wider text-[var(--foreground)]/60">
-            Join my satisfied clients • Let's build something amazing together
+            Join my satisfied clients • &quot;Let&apos;s build something amazing together&quot;
           </p>
         </motion.div>
       </div>
