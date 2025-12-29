@@ -6,7 +6,9 @@ import InteractivePlayground from '@/components/InteractivePlayground';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Education from '@/components/Education';
+import ProfessionalExperience from '@/components/ProfessionalExperience';
 import Achievements from '@/components/Achievements';
+import ClientTestimonials from '@/components/ClientTestimonials';
 import Contact from '@/components/Contact';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -154,7 +156,9 @@ export default function Home() {
       <Projects />
       <Skills />
       <Education />
+      <ProfessionalExperience />
       <Achievements />
+      <ClientTestimonials />
       <Contact />
 
 
