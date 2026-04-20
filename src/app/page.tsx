@@ -1,5 +1,6 @@
 'use client';
 
+import CircuitBackground from '@/components/CircuitBackground';
 import ExpertiseBar from '@/components/ExpertiseBar';
 import Header from '@/components/Header';
 import HeroSection from '@/components/sections/HeroSection';
@@ -15,6 +16,7 @@ import ContactSection from '@/components/sections/ContactSection';
 export default function Home() {
   return (
     <main className="automation-bg min-h-screen relative overflow-x-hidden selection:bg-[var(--accent)] selection:text-white">
+      <CircuitBackground />
       <ExpertiseBar />
       <Header />
 
