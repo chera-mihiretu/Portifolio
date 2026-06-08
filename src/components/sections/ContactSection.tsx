@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { person, socialLinks } from '@/content/portfolio';
+import { SiUpwork } from 'react-icons/si';
+import { person } from '@/content/portfolio';
 
 export default function ContactSection() {
   return (
@@ -27,10 +28,13 @@ export default function ContactSection() {
 
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <a
-                href={`mailto:${person.email}`}
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-[var(--foreground)] px-5 text-sm font-semibold text-[var(--background)] hover:opacity-90 transition-opacity"
+                href={person.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#14a800] px-5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
               >
-                Email me: {person.email}
+                <SiUpwork className="text-lg" />
+                Hire me on Upwork
               </a>
               <a
                 href="#projects"
@@ -38,21 +42,6 @@ export default function ContactSection() {
               >
                 View work
               </a>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.name}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/30 px-4 py-3 text-sm font-semibold text-[var(--foreground)]/80 hover:bg-[var(--background)]/45 transition-colors"
-                >
-                  <s.icon className="text-2xl" />
-                  {s.name}
-                </a>
-              ))}
             </div>
 
             <div className="mt-10 pt-6 border-t border-[var(--card-border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">

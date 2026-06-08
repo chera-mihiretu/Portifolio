@@ -4,11 +4,8 @@ import {
   FaGlobeAfrica,
   FaMedal,
   FaTrophy,
-  FaLinkedin,
-  FaGithub,
-  FaInstagram,
-  FaEnvelope,
 } from 'react-icons/fa';
+import { SiUpwork } from 'react-icons/si';
 import type { IconType } from 'react-icons';
 
 export const person = {
@@ -16,7 +13,14 @@ export const person = {
   title: 'AI Automation Engineer',
   identitySentence:
     'I build autonomous AI agents, self-running business workflows, and intelligent backend systems for companies that want to scale without scaling headcount.',
-  email: 'cheramihiretu@gmail.com',
+  upwork: 'https://www.upwork.com/freelancers/~0146654bf4de11a784',
+  featured: {
+    name: '8D Audio Experience',
+    tagline: 'Chrome extension · immersive 3D spatial audio',
+    blurb: 'Turns any browser audio into real-time 8D spatial sound. Loved by users worldwide.',
+    icon: '/assets/8d-audio/icon128.png',
+    url: 'https://chromewebstore.google.com/detail/8d-audio-experience/cacacomeanpngjabbliegpmmpbpmbmkm',
+  },
   cv: {
     url: '/assets/cv.pdf',
     downloadName: 'Chera_Mihiretu_CV.pdf',
@@ -292,33 +296,56 @@ export const achievements = [
 
 export const socialLinks = [
   {
-    name: 'LinkedIn',
-    url: 'https://linkedin.com/in/chera-mihiretu-a267472a2/',
-    icon: FaLinkedin,
-  },
-  {
-    name: 'GitHub',
-    url: 'https://github.com/chera-mihiretu',
-    icon: FaGithub,
-  },
-  {
-    name: 'Instagram',
-    url: 'https://www.instagram.com/chera_mihiretu/',
-    icon: FaInstagram,
-  },
-  {
-    name: 'Email',
-    url: 'mailto:cheramihiretu@gmail.com',
-    icon: FaEnvelope,
+    name: 'Hire me on Upwork',
+    url: person.upwork,
+    icon: SiUpwork,
   },
 ] as const;
 
-// If/when you add testimonials in the future, put them here.
 export const testimonials: Array<{
   name: string;
   role?: string;
   company?: string;
   quote: string;
   href?: string;
-}> = [];
+  rating?: number;
+  date?: string;
+  source?: string;
+}> = [
+  {
+    name: 'Blue_ GachaBerry',
+    date: 'May 9, 2026',
+    rating: 5,
+    source: 'Chrome Web Store',
+    quote:
+      "Absolutely amazing! Incredible customization, great controls, easy to use UI, and much much more! Safe to say I'm going to use this extension a LOT!",
+    href: person.featured.url,
+  },
+  {
+    name: 'Jaap Thind',
+    date: 'Feb 15, 2026',
+    rating: 5,
+    source: 'Chrome Web Store',
+    quote:
+      'Tested the 8D audio on my new AirPods 4 and the experience was incredible. Sound literally feels like it is moving in a 360-degree circle around your head — it genuinely feels like sitting in the middle of a live concert hall.',
+    href: person.featured.url,
+  },
+  {
+    name: 'Amanuel Yirgalem',
+    date: 'Feb 22, 2026',
+    rating: 5,
+    source: 'Chrome Web Store',
+    quote:
+      'Nice — the thing I like most is that it is fast and automatically applied when music is playing.',
+    href: person.featured.url,
+  },
+  {
+    name: 'Aziz Rakhimov',
+    date: 'Mar 19, 2026',
+    rating: 5,
+    source: 'Chrome Web Store',
+    quote: 'Works exactly like I expected, great product.',
+    href: person.featured.url,
+  },
+];
 
