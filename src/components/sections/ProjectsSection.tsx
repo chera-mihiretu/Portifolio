@@ -5,19 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight, FaDownload, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { projects, type Project } from '@/content/portfolio';
-
-function OutcomeLine(description: string) {
-  const normalized = description.trim();
-  if (!normalized) return '';
-  return normalized
-    .replace(/^Mobile app/i, 'Production-ready mobile app')
-    .replace(/^Python Flask API \+ Flutter app/i, 'API + mobile app system')
-    .replace(/^Campus platform/i, 'Platform')
-    .replace(/^Thread-pooled/i, 'High-throughput')
-    .replace(/^Enabling/i, 'Enables')
-    .replace(/^AI-powered/i, 'AI-assisted')
-    .replace(/^Mobile-first/i, 'Mobile-first product');
-}
+import { wrapIndex } from '@/lib/gallery';
+import { splitFeatured } from '@/lib/portfolio-selectors';
+import { formatProjectOutcome } from '@/lib/project-copy';
 
 function LinkButtons({ p }: { p: Project }) {
   const hasAny = p.github || p.demo || p.apkDownload;
@@ -65,8 +55,8 @@ function FeaturedProject({ p }: { p: Project }) {
   const [imgIdx, setImgIdx] = useState(0);
   const hasMultiple = p.images.length > 1;
 
-  const prev = () => setImgIdx((i) => (i - 1 + p.images.length) % p.images.length);
-  const next = () => setImgIdx((i) => (i + 1) % p.images.length);
+  const prev = () => setImgIdx((i) => wrapIndex(i - 1, p.images.length));
+  const next = () => setImgIdx((i) => wrapIndex(i + 1, p.images.length));
 
   return (
     <motion.article
@@ -213,7 +203,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           <div>
             <h3 className="text-lg font-bold tracking-tight">{p.name}</h3>
             <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-              {OutcomeLine(p.description)}
+              {formatProjectOutcome(p.description)}
             </p>
           </div>
           {p.logo ? (
@@ -241,7 +231,8 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
 }
 
 export default function ProjectsSection() {
-  const [featured, ...rest] = projects;
+  const { featured, rest } = splitFeatured(projects);
+  if (!featured) return null;
 
   return (
     <section id="projects" className="py-20 sm:py-28 px-4">
