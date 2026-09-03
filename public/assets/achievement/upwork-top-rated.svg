@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Upwork Top Rated">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#14532d"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="520" cy="80" r="120" fill="#14a800" opacity="0.18"/>
+  <circle cx="120" cy="300" r="90" fill="#14a800" opacity="0.12"/>
+  <text x="48" y="92" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="6">UPWORK</text>
+  <text x="48" y="188" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">Top Rated</text>
+  <text x="48" y="238" fill="#bbf7d0" font-family="Arial, Helvetica, sans-serif" font-size="24">Verified freelancer badge</text>
+  <rect x="48" y="268" width="220" height="44" rx="22" fill="#14a800"/>
+  <text x="158" y="298" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">2026</text>
+</svg>
