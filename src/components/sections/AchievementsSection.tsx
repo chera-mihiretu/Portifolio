@@ -22,7 +22,7 @@ export default function AchievementsSection() {
             </h2>
           </div>
           <p className="max-w-xl text-[var(--muted)] text-base sm:text-lg">
-            Recognized for cloud competency and competitive problem solving—evidence of depth, not hype.
+            Recognized for cloud competency, competitive problem solving, and Top Rated delivery on Upwork.
           </p>
         </motion.div>
 
@@ -74,6 +74,15 @@ export default function AchievementsSection() {
                     className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/35 px-4 py-2 text-sm font-semibold text-[var(--foreground)]/80 hover:bg-[var(--background)]/50 transition-colors"
                   >
                     Verify on Credly <FaExternalLinkAlt className="h-3.5 w-3.5" />
+                  </a>
+                ) : a.link ? (
+                  <a
+                    href={a.link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/35 px-4 py-2 text-sm font-semibold text-[var(--foreground)]/80 hover:bg-[var(--background)]/50 transition-colors"
+                  >
+                    {a.link.label} <FaExternalLinkAlt className="h-3.5 w-3.5" />
                   </a>
                 ) : (
                   <div className="mt-5 h-10" />

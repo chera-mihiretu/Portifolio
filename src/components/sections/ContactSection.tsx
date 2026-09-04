@@ -25,6 +25,10 @@ export default function ContactSection() {
             <p className="mt-4 max-w-2xl text-[var(--muted)] text-base sm:text-lg">
               If you’re a business owner or team lead, tell me what’s manual, slow, error-prone, or expensive. I’ll design an automation system that reliably runs.
             </p>
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#14a800]/30 bg-[#14a800]/10 px-3 py-1.5 text-xs font-semibold text-[var(--foreground)]/80">
+              <SiUpwork className="h-3.5 w-3.5 text-[#14a800]" />
+              Upwork {person.upworkBadge} freelancer
+            </p>
 
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <a
@@ -34,7 +38,7 @@ export default function ContactSection() {
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#14a800] px-5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
               >
                 <SiUpwork className="text-lg" />
-                Hire me on Upwork
+                Hire me on Upwork · {person.upworkBadge}
               </a>
               <a
                 href="#projects"

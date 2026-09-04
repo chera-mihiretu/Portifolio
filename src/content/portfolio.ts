@@ -14,6 +14,7 @@ export const person = {
   identitySentence:
     'I build autonomous AI agents, self-running business workflows, and intelligent backend systems for companies that want to scale without scaling headcount.',
   upwork: 'https://www.upwork.com/freelancers/~0146654bf4de11a784',
+  upworkBadge: 'Top Rated',
   featured: {
     name: '8D Audio Experience',
     tagline: 'Chrome extension · immersive 3D spatial audio',
@@ -58,6 +59,7 @@ export type Project = {
   github: string | null;
   demo: string | null;
   apkDownload: string | null;
+  clientSource?: string;
 };
 
 export const projects: Project[] = [
@@ -77,6 +79,7 @@ export const projects: Project[] = [
     github: null,
     demo: null,
     apkDownload: null,
+    clientSource: 'Upwork client',
   },
   {
     id: 'PRJ-001',
@@ -235,6 +238,20 @@ export const education = [
 export const achievements = [
   // Note: typed to keep optional fields accessible across the union.
   {
+    title: 'Upwork Top Rated',
+    position: 'Freelancer badge',
+    description:
+      'Earned Upwork’s Top Rated badge for consistent delivery, strong client feedback, and a high job success score across AI automation and backend engineering contracts.',
+    icon: SiUpwork,
+    date: '2026',
+    category: 'Freelance',
+    image: '/assets/achievement/upwork-top-rated.svg',
+    link: {
+      url: person.upwork,
+      label: 'View Upwork profile',
+    },
+  },
+  {
     title: 'AWS Solutions Architect',
     position: 'Associate (SAA-C03)',
     description:
@@ -292,11 +309,15 @@ export const achievements = [
   category: string;
   image: string;
   credly?: string;
+  link?: {
+    url: string;
+    label: string;
+  };
 }>;
 
 export const socialLinks = [
   {
-    name: 'Hire me on Upwork',
+    name: 'Hire me on Upwork · Top Rated',
     url: person.upwork,
     icon: SiUpwork,
   },

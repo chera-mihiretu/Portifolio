@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
+import { SiUpwork } from 'react-icons/si';
 import { achievements, education, person } from '@/content/portfolio';
 
 function Badge({ children }: { children: React.ReactNode }) {
@@ -57,10 +58,10 @@ function scrollTo(id: string) {
 
 export default function HeroSection() {
   const trust = [
+    `Upwork ${person.upworkBadge}`,
     education[1]?.institution,
-    education[2]?.institution,
-    achievements[0]?.title,
-    achievements[2]?.title,
+    achievements[1]?.title,
+    achievements[3]?.title,
   ].filter(Boolean);
 
   return (
@@ -76,7 +77,7 @@ export default function HeroSection() {
             >
               <Badge>AI agents</Badge>
               <Badge>Workflow automation</Badge>
-              <Badge>Backend systems</Badge>
+              <Badge>Upwork Top Rated</Badge>
               <Badge>AWS</Badge>
             </motion.div>
 
@@ -128,6 +129,15 @@ export default function HeroSection() {
                   {p.name}
                 </a>
               ))}
+              <a
+                href={person.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#14a800]/35 bg-[#14a800]/10 px-4 py-2 text-sm font-semibold text-[var(--foreground)]/85 hover:bg-[#14a800]/16 transition-colors"
+              >
+                <SiUpwork className="h-4 w-4 text-[#14a800]" />
+                Upwork · {person.upworkBadge}
+              </a>
             </motion.div>
 
             <motion.div
@@ -196,7 +206,7 @@ export default function HeroSection() {
                     <div className="mt-1 text-sm text-[var(--muted)]">{person.title}</div>
                   </div>
                   <div className="rounded-2xl border border-[var(--card-border)] bg-[var(--background)]/40 px-3 py-2 text-xs font-mono text-[var(--foreground)]/70">
-                    STATUS: READY
+                    UPWORK: {person.upworkBadge.toUpperCase()}
                   </div>
                 </div>
 

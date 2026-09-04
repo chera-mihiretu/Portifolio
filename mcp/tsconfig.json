@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "rootDir": "..",
+    "baseUrl": ".."
+  },
+  "include": ["src/**/*.ts", "../src/content/proposal-data.ts", "../src/content/portfolio.ts"]
+}

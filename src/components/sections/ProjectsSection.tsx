@@ -4,10 +4,21 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight, FaDownload, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import { projects, type Project } from '@/content/portfolio';
-import { wrapIndex } from '@/lib/gallery';
-import { splitFeatured } from '@/lib/portfolio-selectors';
-import { formatProjectOutcome } from '@/lib/project-copy';
+import { SiUpwork } from 'react-icons/si';
+import { person, projects, type Project } from '@/content/portfolio';
+
+function OutcomeLine(description: string) {
+  const normalized = description.trim();
+  if (!normalized) return '';
+  return normalized
+    .replace(/^Mobile app/i, 'Production-ready mobile app')
+    .replace(/^Python Flask API \+ Flutter app/i, 'API + mobile app system')
+    .replace(/^Campus platform/i, 'Platform')
+    .replace(/^Thread-pooled/i, 'High-throughput')
+    .replace(/^Enabling/i, 'Enables')
+    .replace(/^AI-powered/i, 'AI-assisted')
+    .replace(/^Mobile-first/i, 'Mobile-first product');
+}
 
 function LinkButtons({ p }: { p: Project }) {
   const hasAny = p.github || p.demo || p.apkDownload;
@@ -55,8 +66,8 @@ function FeaturedProject({ p }: { p: Project }) {
   const [imgIdx, setImgIdx] = useState(0);
   const hasMultiple = p.images.length > 1;
 
-  const prev = () => setImgIdx((i) => wrapIndex(i - 1, p.images.length));
-  const next = () => setImgIdx((i) => wrapIndex(i + 1, p.images.length));
+  const prev = () => setImgIdx((i) => (i - 1 + p.images.length) % p.images.length);
+  const next = () => setImgIdx((i) => (i + 1) % p.images.length);
 
   return (
     <motion.article
@@ -141,7 +152,14 @@ function FeaturedProject({ p }: { p: Project }) {
         {/* Content */}
         <div className="p-6 sm:p-8 flex flex-col justify-center">
           <div className="font-mono text-[10px] tracking-[0.22em] text-[var(--muted)]">{p.id}</div>
-          <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">{p.name}</h3>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">{p.name}</h3>
+            {p.clientSource ? (
+              <span className="rounded-full border border-[#14a800]/30 bg-[#14a800]/10 px-3 py-1 text-[10px] font-mono tracking-wider text-[#14a800]">
+                {p.clientSource}
+              </span>
+            ) : null}
+          </div>
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--muted)]">
             {p.description}
           </p>
@@ -203,7 +221,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           <div>
             <h3 className="text-lg font-bold tracking-tight">{p.name}</h3>
             <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-              {formatProjectOutcome(p.description)}
+              {OutcomeLine(p.description)}
             </p>
           </div>
           {p.logo ? (
@@ -231,8 +249,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
 }
 
 export default function ProjectsSection() {
-  const { featured, rest } = splitFeatured(projects);
-  if (!featured) return null;
+  const [featured, ...rest] = projects;
 
   return (
     <section id="projects" className="py-20 sm:py-28 px-4">
@@ -249,9 +266,20 @@ export default function ProjectsSection() {
               Projects with <span className="text-gradient">real systems</span>
             </h2>
           </div>
-          <p className="max-w-xl text-[var(--muted)] text-base sm:text-lg">
-            Built to ship: architecture, reliability, and product-level execution—then improved with iteration.
-          </p>
+          <div className="max-w-xl space-y-4">
+            <p className="text-[var(--muted)] text-base sm:text-lg">
+              Built to ship: architecture, reliability, and product-level execution—then improved with iteration.
+            </p>
+            <a
+              href={person.upwork}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#14a800]/30 bg-[#14a800]/10 px-4 py-2 text-sm font-semibold text-[var(--foreground)]/85 hover:bg-[#14a800]/16 transition-colors"
+            >
+              <SiUpwork className="h-4 w-4 text-[#14a800]" />
+              See more client work on Upwork · {person.upworkBadge}
+            </a>
+          </div>
         </motion.div>
 
         {/* Featured project — full-width with image gallery */}
