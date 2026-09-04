@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "portfolio": {
+      "url": "http://localhost:3000/mcp",
+      "headers": {
+        "Authorization": "Bearer portfolio-mcp-local-dev-token"
+      }
+    }
+  }
+}

@@ -2,45 +2,24 @@
 
 import { motion } from 'framer-motion';
 import { FaBolt, FaCogs, FaLock, FaShieldAlt, FaSitemap, FaCloud } from 'react-icons/fa';
+import { services as proposalServices } from '@/content/proposal-data';
 
-const services = [
-  {
-    title: 'AI Agent Development',
-    description:
-      'Autonomous agents that take actions across tools, APIs, and internal systems—with guardrails, retries, and measurable outputs.',
-    icon: <FaBolt className="h-5 w-5 text-[var(--accent-secondary)]" />,
-  },
-  {
-    title: 'Workflow Automation',
-    description:
-      'From manual ops to reliable pipelines: triggers, queues, approvals, schedules, and self-healing execution for business processes.',
-    icon: <FaCogs className="h-5 w-5 text-[var(--accent)]" />,
-  },
-  {
-    title: 'Open WebUI (Open Claw) Setup & Hardening',
-    description:
-      'End-to-end deployment of Open WebUI with production-grade security: SSO/OIDC authentication, role-based access control, encrypted model traffic, API key rotation, network isolation, and audit logging—so your team gets a private AI interface without exposing sensitive data.',
-    icon: <FaLock className="h-5 w-5 text-[var(--accent-secondary)]" />,
-  },
-  {
-    title: 'Intelligent Backend Systems',
-    description:
-      'APIs, services, and data flows designed for scale: observability, clean architecture, and performance you can trust.',
-    icon: <FaSitemap className="h-5 w-5 text-[var(--accent-secondary)]" />,
-  },
-  {
-    title: 'AWS Cloud Infrastructure',
-    description:
-      'Secure, cost-aware cloud architecture—deployment pipelines, environments, and production reliability for automation workloads.',
-    icon: <FaCloud className="h-5 w-5 text-[var(--accent)]" />,
-  },
-  {
-    title: 'Security & Reliability',
-    description:
-      'Least-privilege integrations, audit trails, and failure-mode thinking so automation helps the business instead of risking it.',
-    icon: <FaShieldAlt className="h-5 w-5 text-[var(--accent-secondary)]" />,
-  },
-] as const;
+const serviceIcons = {
+  'AI Agent Development': FaBolt,
+  'Workflow Automation': FaCogs,
+  'Open WebUI (Open Claw) Setup & Hardening': FaLock,
+  'Intelligent Backend Systems': FaSitemap,
+  'AWS Cloud Infrastructure': FaCloud,
+  'Security & Reliability': FaShieldAlt,
+} as const;
+
+const services = proposalServices.map((service) => {
+  const Icon = serviceIcons[service.title as keyof typeof serviceIcons] ?? FaBolt;
+  return {
+    ...service,
+    icon: <Icon className="h-5 w-5 text-[var(--accent-secondary)]" />,
+  };
+});
 
 export default function ServicesSection() {
   return (

@@ -1,33 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { processSteps } from '@/content/proposal-data';
 
-const steps = [
-  {
-    step: '01',
-    title: 'Discovery & system map',
-    description:
-      'We identify bottlenecks, tools, owners, and failure points—then define success metrics and constraints (security, cost, time).',
-  },
-  {
-    step: '02',
-    title: 'Prototype fast, validate early',
-    description:
-      'A working slice of the workflow: inputs → decisions → actions. You see real behavior before we scale scope.',
-  },
-  {
-    step: '03',
-    title: 'Production build & hardening',
-    description:
-      'Retries, idempotency, logging, alerts, and guardrails. The automation should survive messy data and real-world edge cases.',
-  },
-  {
-    step: '04',
-    title: 'Deploy, monitor, iterate',
-    description:
-      'Ship with dashboards and feedback loops. We optimize outcomes, reduce operational load, and expand into adjacent workflows.',
-  },
-] as const;
+const steps = processSteps;
 
 export default function ProcessSection() {
   return (
