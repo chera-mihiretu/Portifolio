@@ -334,6 +334,16 @@ export const testimonials: Array<{
   source?: string;
 }> = [
   {
+    name: 'Upwork Client',
+    role: 'Web app pre-launch QA',
+    date: 'May 17, 2026',
+    rating: 5,
+    source: 'Upwork · Endorsed Reliable',
+    quote:
+      'It was a pleasure working with Chera! I needed someone to do QA testing for my app and he delivered great work promptly and even took his time to think beyond the project scope and give me additional UX/UI tips after testing my app. Would highly recommend others to hire Chera for app testing!',
+    href: person.upwork,
+  },
+  {
     name: 'Blue_ GachaBerry',
     date: 'May 9, 2026',
     rating: 5,
