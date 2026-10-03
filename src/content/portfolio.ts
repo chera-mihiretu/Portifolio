@@ -161,6 +161,18 @@ export const projects: Project[] = [
     apkDownload: null,
   },
   {
+    id: 'PRJ-009',
+    name: person.featured.name,
+    status: 'Live',
+    description: `${person.featured.tagline}. ${person.featured.blurb}`,
+    images: [person.featured.icon],
+    logo: person.featured.icon,
+    technologies: ['Chrome Extension', 'Spatial Audio'],
+    github: null,
+    demo: person.featured.url,
+    apkDownload: null,
+  },
+  {
     id: 'PRJ-000',
     name: 'Stock Change Notification System',
     status: 'Live',
