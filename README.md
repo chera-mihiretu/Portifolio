@@ -4,7 +4,7 @@ Personal site for my AI automation, backend, and shipped-product work. Built as 
 
 ## Requirements
 
-- Node.js 20 (`20.x`, see `.nvmrc`)
+- Node.js 24 (`24.x`, see `.nvmrc`)
 - pnpm 10 (this repo uses one lockfile: `pnpm-lock.yaml`)
 
 ```bash
