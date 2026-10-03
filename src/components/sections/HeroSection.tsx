@@ -123,6 +123,41 @@ export default function HeroSection() {
                 </a>
               ))}
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.52, duration: 0.6 }}
+              className="mt-6"
+            >
+              <a
+                href={person.featured.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center gap-4 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-4 backdrop-blur transition-colors hover:bg-[var(--background)]/45 max-w-xl overflow-hidden"
+              >
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-[var(--accent-secondary)]/15 to-[var(--accent)]/15 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <Image
+                  src={person.featured.icon}
+                  alt={person.featured.name}
+                  width={56}
+                  height={56}
+                  className="relative h-14 w-14 rounded-xl shadow-[0_0_28px_var(--glow-2)]"
+                />
+                <div className="relative min-w-0">
+                  <div className="font-mono text-[10px] tracking-[0.22em] text-[var(--accent-secondary)]">
+                    FEATURED PRODUCT
+                  </div>
+                  <div className="mt-1 text-sm font-bold tracking-tight truncate">
+                    {person.featured.name}
+                  </div>
+                  <div className="mt-0.5 text-xs text-[var(--muted)] truncate">
+                    {person.featured.tagline}
+                  </div>
+                </div>
+                <FaArrowRight className="relative ml-auto h-3.5 w-3.5 shrink-0 text-[var(--foreground)]/60 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            </motion.div>
           </div>
 
           <div className="lg:col-span-6">
