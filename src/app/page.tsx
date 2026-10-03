@@ -1,7 +1,3 @@
-'use client';
-
-import CircuitBackground from '@/components/CircuitBackground';
-import ExpertiseBar from '@/components/ExpertiseBar';
 import Header from '@/components/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import FlagshipSection from '@/components/sections/FlagshipSection';
@@ -16,21 +12,26 @@ import ContactSection from '@/components/sections/ContactSection';
 
 export default function Home() {
   return (
-    <main className="automation-bg min-h-screen relative overflow-x-hidden selection:bg-[var(--accent)] selection:text-white">
-      <CircuitBackground />
-      <ExpertiseBar />
+    <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[var(--foreground)] focus:px-4 focus:py-2 focus:text-[var(--background)]"
+      >
+        Skip to content
+      </a>
       <Header />
-
-      <HeroSection />
-      <FlagshipSection />
-      <ServicesSection />
-      <ProcessSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <EducationSection />
-      <AchievementsSection />
-      <TestimonialsSection />
-      <ContactSection />
-    </main>
+      <main id="main">
+        <HeroSection />
+        <FlagshipSection />
+        <ServicesSection />
+        <ProcessSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <EducationSection />
+        <AchievementsSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
+    </>
   );
 }

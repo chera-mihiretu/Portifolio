@@ -1,209 +1,157 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FaArrowRight, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaArrowRight, FaDownload, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
-import { flagship, person } from '@/content/portfolio';
-
-function scrollTo(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+import { expertiseBar, flagship, person } from '@/content/portfolio';
+import { ButtonLink, Card, StatusBadge, Tag } from '@/components/ui/primitives';
 
 export default function HeroSection() {
   return (
-    <section id="top" className="pt-32 sm:pt-36 pb-18 sm:pb-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-6">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-2 mb-6"
+    <section id="top" className="px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24">
+      <div className="mx-auto max-w-6xl">
+        {/* Who I am */}
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <a
+              href={person.upwork}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-sm font-medium hover:bg-[var(--surface-2)]"
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-[var(--card-bg)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)]/80 backdrop-blur">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-secondary)] shadow-[0_0_16px_var(--glow-2)]" />
-                {flagship.status} on Railway
-              </span>
-              <span className="font-mono text-[11px] tracking-[0.22em] text-[var(--muted)]">
-                {person.name} · {person.title}
-              </span>
-            </motion.div>
+              <SiUpwork className="h-4 w-4 text-[var(--upwork)]" aria-hidden="true" />
+              {person.upworkBadge} on Upwork
+            </a>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]"
-            >
-              <span className="block text-[1.05rem] sm:text-xl font-semibold tracking-tight text-[var(--foreground)]/80 mb-3">
-                e-school.et
-              </span>
-              One platform, a{' '}
-              <span className="text-gradient">private address</span> for every school
-            </motion.h1>
+            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold">{person.name}</h1>
+            <p className="mt-2 text-xl sm:text-2xl text-[var(--muted)]">{person.title}</p>
+            <p className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed">{person.identitySentence}</p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.18 }}
-              className="mt-5 text-base sm:text-lg text-[var(--muted)] max-w-xl"
-            >
-              {flagship.oneLine}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.28 }}
-              className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
-            >
-              <a
-                href={flagship.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-[var(--foreground)] px-5 text-sm font-semibold text-[var(--background)] transition-opacity hover:opacity-90"
-              >
-                Open the live site
-                <FaExternalLinkAlt className="h-3.5 w-3.5" />
-              </a>
-              <button
-                onClick={() => scrollTo('e-school')}
-                className="group inline-flex h-12 items-center justify-center gap-3 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/40 px-5 text-sm font-semibold text-[var(--foreground)]/85 backdrop-blur transition-colors hover:bg-[var(--background)]/55"
-              >
-                Read the case
-                <FaArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.38, duration: 0.6 }}
-              className="mt-8 flex flex-wrap gap-2"
-            >
-              {flagship.skills.slice(0, 6).map((skill) => (
-                <span
-                  key={skill}
-                  className="text-xs font-mono text-[var(--foreground)]/60 rounded-full border border-[var(--card-border)] px-3 py-1.5 bg-[var(--card-bg)]/50 backdrop-blur"
-                >
-                  {skill}
-                </span>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.46, duration: 0.6 }}
-              className="mt-6 flex flex-wrap items-center gap-3"
-            >
-              <a
-                href={person.upwork}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#14a800]/35 bg-[#14a800]/10 px-4 py-2 text-sm font-semibold text-[var(--foreground)]/85 hover:bg-[#14a800]/16 transition-colors"
-              >
-                <SiUpwork className="h-4 w-4 text-[#14a800]" />
-                Upwork · {person.upworkBadge}
-              </a>
-              {person.codingProfiles.map((p) => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/30 px-4 py-2 text-sm font-semibold text-[var(--foreground)]/80 hover:bg-[var(--background)]/45 transition-colors"
-                >
-                  <Image src={p.icon} alt={p.name} width={18} height={18} className="opacity-80" />
-                  {p.name}
-                </a>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.52, duration: 0.6 }}
-              className="mt-6"
-            >
-              <a
-                href={person.featured.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex items-center gap-4 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-4 backdrop-blur transition-colors hover:bg-[var(--background)]/45 max-w-xl overflow-hidden"
-              >
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-[var(--accent-secondary)]/15 to-[var(--accent)]/15 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                <Image
-                  src={person.featured.icon}
-                  alt={person.featured.name}
-                  width={56}
-                  height={56}
-                  className="relative h-14 w-14 rounded-xl shadow-[0_0_28px_var(--glow-2)]"
-                />
-                <div className="relative min-w-0">
-                  <div className="font-mono text-[10px] tracking-[0.22em] text-[var(--accent-secondary)]">
-                    FEATURED PRODUCT
-                  </div>
-                  <div className="mt-1 text-sm font-bold tracking-tight truncate">
-                    {person.featured.name}
-                  </div>
-                  <div className="mt-0.5 text-xs text-[var(--muted)] truncate">
-                    {person.featured.tagline}
-                  </div>
-                </div>
-                <FaArrowRight className="relative ml-auto h-3.5 w-3.5 shrink-0 text-[var(--foreground)]/60 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </motion.div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <ButtonLink href={person.upwork} external variant="upwork">
+                <SiUpwork className="h-4 w-4" aria-hidden="true" />
+                Hire me on Upwork
+              </ButtonLink>
+              <ButtonLink href="#projects" variant="secondary">
+                See my work
+                <FaArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </ButtonLink>
+              <ButtonLink href={person.cv.url} download={person.cv.downloadName} variant="secondary">
+                <FaDownload className="h-3.5 w-3.5" aria-hidden="true" />
+                Download CV
+              </ButtonLink>
+            </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.08 }}
-              className="relative"
-            >
-              <div className="absolute -inset-6 rounded-[32px] bg-[var(--accent-secondary)]/10 blur-2xl" />
-              <a
-                href={flagship.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-panel group relative block rounded-[28px] overflow-hidden"
-              >
-                <div className="relative h-64 sm:h-80 w-full">
-                  <Image
-                    src={flagship.images[0]}
-                    alt="e-school.et network home: every school on its own address"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
+          <aside className="lg:col-span-4 lg:pt-14 space-y-6">
+            <div>
+              <h2 className="text-sm font-medium text-[var(--muted)]">Core expertise</h2>
+              <ul className="mt-3 space-y-2">
+                {expertiseBar.map((item) => (
+                  <li key={item} className="flex gap-3 text-[15px]">
+                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-sm font-medium text-[var(--muted)]">Coding profiles</h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {person.codingProfiles.map((p) => (
+                  <a
+                    key={p.name}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-sm font-medium hover:bg-[var(--surface-2)]"
+                  >
+                    <Image src={p.icon} alt="" width={16} height={16} />
+                    {p.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        {/* Featured work */}
+        <div className="mt-16 sm:mt-20">
+          <h2 className="text-sm font-medium text-[var(--muted)]">Featured work</h2>
+          <div className="mt-4 grid gap-5 lg:grid-cols-3">
+            <Card as="article" className="overflow-hidden lg:col-span-2">
+              <div className="relative aspect-[2/1] w-full border-b border-[var(--border)] bg-[var(--surface-2)]">
+                <Image
+                  src={flagship.images[0]}
+                  alt="e-school.et network home: every school on its own address"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority
+                />
+              </div>
+              <div className="grid gap-6 p-6 sm:grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-sm font-semibold">{flagship.name}</span>
+                    <StatusBadge>{flagship.status} on Railway</StatusBadge>
+                  </div>
+                  <h3 className="mt-3 text-xl font-semibold">One platform, a private address for every school</h3>
+                  <p className="mt-3 text-[15px] text-[var(--muted)]">{flagship.oneLine}</p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                    <ButtonLink href={flagship.url} external variant="primary" size="sm">
+                      Open the live site
+                      <FaExternalLinkAlt className="h-3 w-3" aria-hidden="true" />
+                    </ButtonLink>
+                    <ButtonLink href="#e-school" variant="secondary" size="sm">
+                      Read the case study
+                    </ButtonLink>
+                  </div>
                 </div>
-                <div className="relative border-t border-[var(--card-border)] bg-[var(--background)]/55 p-4 sm:p-5">
-                  <div className="font-mono text-[10px] tracking-[0.22em] text-[var(--accent-secondary)]">
-                    THE ADDRESS IS THE SCHOOL
-                  </div>
-                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <div className="rounded-xl border border-[var(--card-border)] bg-[var(--background)]/40 px-3 py-2">
-                      <div className="font-mono text-[10px] tracking-[0.18em] text-[var(--muted)]">SCHOOL</div>
-                      <div className="mt-1 text-sm font-semibold tracking-tight">north-hall.e-school.et</div>
+                <div>
+                  <dl className="grid gap-2 text-sm">
+                    <div className="rounded-lg bg-[var(--surface-2)] px-3 py-2">
+                      <dt className="text-xs text-[var(--subtle)]">School site</dt>
+                      <dd className="font-mono text-[13px]">north-hall.e-school.et</dd>
                     </div>
-                    <div className="rounded-xl border border-[var(--card-border)] bg-[var(--background)]/40 px-3 py-2">
-                      <div className="font-mono text-[10px] tracking-[0.18em] text-[var(--muted)]">OPERATOR</div>
-                      <div className="mt-1 text-sm font-semibold tracking-tight">admin.e-school.et</div>
+                    <div className="rounded-lg bg-[var(--surface-2)] px-3 py-2">
+                      <dt className="text-xs text-[var(--subtle)]">Operator console</dt>
+                      <dd className="font-mono text-[13px]">admin.e-school.et</dd>
                     </div>
-                  </div>
-                  <p className="mt-3 text-xs text-[var(--muted)]">
+                  </dl>
+                  <p className="mt-3 text-sm text-[var(--muted)]">
                     The hostname chooses the school. The session chooses the person.
                   </p>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {flagship.skills.slice(0, 6).map((skill) => (
+                      <Tag key={skill}>{skill}</Tag>
+                    ))}
+                  </div>
                 </div>
-              </a>
-            </motion.div>
+              </div>
+            </Card>
+
+            <Card as="article" className="overflow-hidden flex flex-col">
+              <div className="flex aspect-[2/1] lg:aspect-auto lg:h-[45%] items-center justify-center border-b border-[var(--border)] bg-[var(--surface-2)]">
+                <Image
+                  src={person.featured.icon}
+                  alt={`${person.featured.name} icon`}
+                  width={112}
+                  height={112}
+                  className="h-24 w-24 rounded-2xl"
+                />
+              </div>
+              <div className="p-6 flex flex-1 flex-col">
+                <p className="text-xs font-medium text-[var(--accent)]">Featured product</p>
+                <h3 className="mt-1 text-xl font-semibold">{person.featured.name}</h3>
+                <p className="mt-3 text-sm font-medium">{person.featured.tagline}</p>
+                <p className="mt-2 text-[15px] text-[var(--muted)]">{person.featured.blurb}</p>
+                <div className="mt-auto pt-6">
+                  <ButtonLink href={person.featured.url} external variant="secondary" size="sm">
+                    View on Chrome Web Store
+                    <FaExternalLinkAlt className="h-3 w-3" aria-hidden="true" />
+                  </ButtonLink>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </div>

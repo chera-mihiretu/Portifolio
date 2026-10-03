@@ -1,56 +1,25 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { education } from '@/content/portfolio';
+import { Card, Section } from '@/components/ui/primitives';
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-20 sm:py-28 px-4">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-10% 0px' }}
-          className="mb-10"
-        >
-          <div className="font-mono text-[11px] tracking-[0.22em] text-[var(--muted)]">EDUCATION</div>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Knowledge <span className="text-gradient">base</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {education.map((e, idx) => (
-            <motion.div
-              key={`${e.institution}-${e.degree}`}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10% 0px' }}
-              transition={{ delay: idx * 0.06 }}
-              className="glass-panel rounded-2xl p-6"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="relative h-10 w-10 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/40 overflow-hidden">
-                    <Image src={e.image} alt={e.institution} fill className="object-contain p-2 opacity-90" />
-                  </div>
-                  <div>
-                    <div className="text-base font-bold tracking-tight">{e.institution}</div>
-                    <div className="text-sm text-[var(--muted)]">{e.degree}</div>
-                  </div>
-                </div>
-                <span className="rounded-xl border border-[var(--card-border)] bg-[var(--background)]/35 px-3 py-2 text-xs font-mono text-[var(--foreground)]/70 whitespace-nowrap">
-                  {e.status}
-                </span>
+    <Section id="education" index="06" label="Education" title="Knowledge base" tone="tinted">
+      <ul className="grid gap-5 lg:grid-cols-3">
+        {education.map((e) => (
+          <Card as="li" key={`${e.institution}-${e.degree}`} className="p-6">
+            <div className="flex items-center justify-between gap-4">
+              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-white">
+                <Image src={e.image} alt={`${e.institution} logo`} fill className="object-contain p-2" />
               </div>
-
-              <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">{e.details}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+              <span className="rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-xs font-medium">{e.status}</span>
+            </div>
+            <h3 className="mt-4 text-lg font-semibold">{e.institution}</h3>
+            <p className="mt-0.5 text-[15px] font-medium text-[var(--accent)]">{e.degree}</p>
+            <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted)]">{e.details}</p>
+          </Card>
+        ))}
+      </ul>
+    </Section>
   );
 }
-
