@@ -17,13 +17,13 @@ export default function TestimonialsSection() {
           className="mb-10"
         >
           <div className="font-mono text-[11px] tracking-[0.22em] text-[var(--muted)]">
-            8D AUDIO EXPERIENCE · USER REVIEWS
+            CLIENT & USER REVIEWS
           </div>
           <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight">
-            What users say about <span className="text-gradient">8D Audio Experience</span>
+            What clients and users <span className="text-gradient">say</span>
           </h2>
           <p className="mt-3 text-sm text-[var(--muted)]">
-            Verified 5-star reviews from the Chrome Web Store for my 8D Audio Experience extension.
+            5-star feedback from Upwork clients and Chrome Web Store users of 8D Audio Experience.
           </p>
         </motion.div>
 

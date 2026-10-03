@@ -3,6 +3,7 @@ import {
   achievements,
   education,
   expertiseBar,
+  flagship,
   person,
   projects,
   skillCategories,
@@ -17,6 +18,11 @@ describe('portfolio content', () => {
     expect(person.identitySentence.length).toBeGreaterThan(20);
     expect(person.featured.name).toBe('8D Audio Experience');
     expect(person.featured.url.startsWith('https://')).toBe(true);
+    expect(flagship.url).toBe('https://e-school.et');
+    expect(flagship.headline).toContain('private address');
+    expect(flagship.outOfScope.toLowerCase()).toContain('grades');
+    expect(projects[0]?.name).toBe(flagship.name);
+    expect(projects[0]?.demo).toBe(flagship.url);
   });
 
   it('keeps project ids unique and every project reviewable offline', () => {

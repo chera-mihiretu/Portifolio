@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { SiUpwork } from 'react-icons/si';
-import { person } from '@/content/portfolio';
+import { flagship, person } from '@/content/portfolio';
 
 export default function ContactSection() {
   return (
@@ -23,6 +23,9 @@ export default function ContactSection() {
               Ready to <span className="text-gradient">automate</span>?
             </h2>
             <p className="mt-4 max-w-2xl text-[var(--muted)] text-base sm:text-lg">
+              {flagship.cta}
+            </p>
+            <p className="mt-3 max-w-2xl text-[var(--muted)] text-base sm:text-lg">
               If you’re a business owner or team lead, tell me what’s manual, slow, error-prone, or expensive. I’ll design an automation system that reliably runs.
             </p>
             <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#14a800]/30 bg-[#14a800]/10 px-3 py-1.5 text-xs font-semibold text-[var(--foreground)]/80">

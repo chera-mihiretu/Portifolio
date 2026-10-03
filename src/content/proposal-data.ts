@@ -173,6 +173,10 @@ export type ProposalProfile = {
 
 function projectAngles(name: string, technologies: string[]): string[] {
   const angles: Record<string, string[]> = {
+    'e-school.et': [
+      'Shipped a live host-based school platform: the subdomain is the school, roles stay separate, and the operator console cannot see inside day-to-day work.',
+      'Production on Railway at e-school.et — Next.js, Node, and Postgres, with per-school schemas and host-locked sessions.',
+    ],
     'Stock Change Notification System': [
       'Built a live n8n workflow that monitors market data and pushes real-time alerts—similar to ops automation clients need.',
       'Delivered end-to-end for an Upwork client: scraping, triggers, notifications, and reliable execution.',

@@ -40,7 +40,92 @@ export const person = {
   ],
 } as const;
 
+export const flagship = {
+  name: 'e-school.et',
+  url: 'https://e-school.et',
+  status: 'Live',
+  headline: 'e-school.et — one platform, a private address for every school',
+  oneLine:
+    'Schools join one network and still keep their own door: a public site, a staff login, and tools to run classes, courses, and people.',
+  short:
+    'Multi-tenant school platform. Each school gets its own subdomain, public page, and roles for directors, teachers, staff, and students. Live at e-school.et.',
+  medium:
+    'I built e-school.et, a host-based school platform where the web address is the school. A principal does not share a generic dashboard with every other school. Families open north-hall.e-school.et and see that school’s name, story, and login. Directors, teachers, office staff, and students sign in on that same address, each with a different workspace. The operator sits above the schools on admin.e-school.et: create a school, send the director their first login, list who is on the network, and pause a school without deleting its data. Schools stay independent. The network stays in one product.',
+  problem:
+    'Most school software puts every campus inside one shared login. Families cannot tell which school they are on. Principals cannot own a public address. Operators who want to host many schools end up copying the same app, or giving every school the keys to everyone else’s data. Schools need a public face and an office. Operators need a way to open and pause those schools without running them.',
+  premise: 'e-school.et is one product with two worlds that never mix.',
+  worlds: [
+    {
+      title: 'For a school',
+      points: [
+        'Its own address, such as north-hall.e-school.et, with the school name on the door.',
+        'A public page the director can rewrite: hero, about, address, and how staff sign in. The layout stays one clear template.',
+        'Separate sign-in for the director, teachers, office staff, and students. A teacher cannot open director settings. Staff cannot manage the teacher roster.',
+        'Office tools for people and the timetable shape of the school: teachers, staff, and students; rooms and class sections (7A, 7B, and onward); courses tied to grade levels, with one teacher per course on a section.',
+        'First-time director setup: temporary password, a permanent username, and a three-letter school code, then day-to-day work on the school’s own host.',
+      ],
+    },
+    {
+      title: 'For the operator',
+      points: [
+        'A locked console on admin.e-school.et to create a school from a name and director email, resend setup credentials, and suspend or reactivate a school. Suspended schools go offline. Their data stays.',
+        'A public directory of schools on the network home, and a contact inbox from the main site.',
+        'No access to a school’s grades, classes, or public copy. The operator hosts the network. The school runs the school.',
+      ],
+    },
+    {
+      title: 'For families',
+      points: [
+        'A calm public page on the school’s own address, plus a login when they already belong there. The main site, e-school.et, explains the network. It is not a campus.',
+      ],
+    },
+  ],
+  buyer: [
+    {
+      title: 'Own address',
+      body: 'The school’s name is the URL, not a row in someone else’s portal.',
+    },
+    {
+      title: 'Hard walls between schools',
+      body: 'Each school’s data lives in its own database schema. A session from one school is useless on another.',
+    },
+    {
+      title: 'Roles match the building',
+      body: 'Director, teacher, staff, and student are different jobs, not one admin checkbox.',
+    },
+    {
+      title: 'An operator can grow a network',
+      body: 'Add a school, pause it, feature it, and read inbound messages without impersonating the principal.',
+    },
+    {
+      title: 'Already deployed',
+      body: 'The product runs in production on Railway at e-school.et.',
+    },
+  ],
+  built:
+    'Next.js frontend, Node backend, Postgres. The hostname chooses the school. The session chooses the person. Business rules live in use cases, not in the page or the HTTP handler. Sign-in is protected with Turnstile. Cookies are host-only, so an admin session never travels to a school site.',
+  who: 'School groups, dioceses, and education operators who want many independent schools on one platform. Also founders who need the same pattern: many customers, one product, a private front door for each.',
+  cta: 'Need the same shape for schools, clinics, or any network of independent sites? I design and ship host-based products: one platform, a private address per customer, and an operator console that cannot see inside their day-to-day work.',
+  outOfScope: 'Grades, attendance, a parent portal, and billing are not in this version.',
+  skills: [
+    'Multi-tenant SaaS',
+    'Next.js',
+    'Node.js',
+    'PostgreSQL',
+    'Role-based access',
+    'Subdomain routing',
+    'Authentication',
+    'Clean architecture',
+    'Railway',
+  ],
+  images: [
+    '/assets/projects/e-school/hero.png',
+    '/assets/projects/e-school/what-we-do.png',
+  ],
+} as const;
+
 export const expertiseBar = [
+  'Multi-tenant SaaS',
   'AI Agent Development',
   'Workflow Automation',
   'LangChain · CrewAI · n8n . open claw',
@@ -63,6 +148,18 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: 'PRJ-008',
+    name: flagship.name,
+    status: flagship.status,
+    description: flagship.medium,
+    images: [...flagship.images],
+    logo: null,
+    technologies: [...flagship.skills],
+    github: null,
+    demo: flagship.url,
+    apkDownload: null,
+  },
   {
     id: 'PRJ-000',
     name: 'Stock Change Notification System',
@@ -333,6 +430,16 @@ export const testimonials: Array<{
   date?: string;
   source?: string;
 }> = [
+  {
+    name: 'Upwork Client',
+    role: 'Web app pre-launch QA',
+    date: 'May 17, 2026',
+    rating: 5,
+    source: 'Upwork · Endorsed Reliable',
+    quote:
+      'It was a pleasure working with Chera! I needed someone to do QA testing for my app and he delivered great work promptly and even took his time to think beyond the project scope and give me additional UX/UI tips after testing my app. Would highly recommend others to hire Chera for app testing!',
+    href: person.upwork,
+  },
   {
     name: 'Blue_ GachaBerry',
     date: 'May 9, 2026',
