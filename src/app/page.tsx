@@ -4,6 +4,7 @@ import CircuitBackground from '@/components/CircuitBackground';
 import ExpertiseBar from '@/components/ExpertiseBar';
 import Header from '@/components/Header';
 import HeroSection from '@/components/sections/HeroSection';
+import FlagshipSection from '@/components/sections/FlagshipSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
@@ -21,6 +22,7 @@ export default function Home() {
       <Header />
 
       <HeroSection />
+      <FlagshipSection />
       <ServicesSection />
       <ProcessSection />
       <ProjectsSection />

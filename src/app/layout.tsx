@@ -5,7 +5,7 @@ import { Providers } from './providers';
 export const metadata: Metadata = {
   title: 'Chera Mihiretu | AI Automation Engineer',
   description:
-    'AI Automation Engineer building autonomous agents, self-running workflows, and intelligent backend systems for companies scaling without scaling headcount.',
+    'e-school.et — one platform, a private address for every school. Chera Mihiretu builds host-based products, autonomous agents, and backend systems.',
   icons: {
     icon: '/assets/logo-dark.png', // Assuming these assets exist, otherwise I should probably update them later
   },

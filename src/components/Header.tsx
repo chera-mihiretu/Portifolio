@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 const sections = [
+  { id: 'e-school', label: 'e-school' },
   { id: 'services', label: 'Services' },
   { id: 'process', label: 'Process' },
   { id: 'projects', label: 'Work' },
@@ -74,12 +75,12 @@ export default function Header() {
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto">
             {sections.map((s) => (
               <button
                 key={s.id}
                 onClick={() => scrollTo(s.id)}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--foreground)]/70 hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5 transition-colors"
+                className="shrink-0 rounded-xl px-2.5 py-2 text-[13px] font-medium text-[var(--foreground)]/70 hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5 transition-colors"
               >
                 {s.label}
               </button>
