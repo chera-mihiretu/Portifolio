@@ -183,6 +183,8 @@ function FeaturedProject({ p }: { p: Project }) {
 }
 
 function ProjectCard({ p, idx }: { p: Project; idx: number }) {
+  const coverIsLogo = Boolean(p.logo && p.images[0] === p.logo);
+
   return (
     <motion.article
       key={p.id}
@@ -198,7 +200,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
             src={p.images[0]}
             alt={p.name}
             fill
-            className="object-cover"
+            className={coverIsLogo ? 'object-contain p-8' : 'object-cover'}
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           />
         ) : (
@@ -224,7 +226,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
               {OutcomeLine(p.description)}
             </p>
           </div>
-          {p.logo ? (
+          {p.logo && !coverIsLogo ? (
             <div className="relative h-10 w-10 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/40 overflow-hidden shrink-0">
               <Image src={p.logo} alt={`${p.name} logo`} fill className="object-contain p-1.5" />
             </div>

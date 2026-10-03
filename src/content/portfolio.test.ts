@@ -23,6 +23,9 @@ describe('portfolio content', () => {
     expect(flagship.outOfScope.toLowerCase()).toContain('grades');
     expect(projects[0]?.name).toBe(flagship.name);
     expect(projects[0]?.demo).toBe(flagship.url);
+    expect(projects.some((project) => project.name === person.featured.name && project.demo === person.featured.url)).toBe(
+      true,
+    );
   });
 
   it('keeps project ids unique and every project reviewable offline', () => {
