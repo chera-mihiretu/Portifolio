@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SiUpwork } from 'react-icons/si';
+import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { flagship, person } from '@/content/portfolio';
 
 export default function ContactSection() {
@@ -28,20 +28,22 @@ export default function ContactSection() {
             <p className="mt-3 max-w-2xl text-[var(--muted)] text-base sm:text-lg">
               If you’re a business owner or team lead, tell me what’s manual, slow, error-prone, or expensive. I’ll design an automation system that reliably runs.
             </p>
-            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#14a800]/30 bg-[#14a800]/10 px-3 py-1.5 text-xs font-semibold text-[var(--foreground)]/80">
-              <SiUpwork className="h-3.5 w-3.5 text-[#14a800]" />
-              Upwork {person.upworkBadge} freelancer
-            </p>
-
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <a
-                href={person.upwork}
+                href={`mailto:${person.email}`}
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[var(--foreground)] px-5 text-sm font-semibold text-[var(--background)] hover:opacity-90 transition-opacity"
+              >
+                <FaEnvelope className="text-base" />
+                Get in touch
+              </a>
+              <a
+                href={person.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#14a800] px-5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-[var(--card-border)] bg-[var(--background)]/35 px-5 text-sm font-semibold text-[var(--foreground)]/85 hover:bg-[var(--background)]/50 transition-colors"
               >
-                <SiUpwork className="text-lg" />
-                Hire me on Upwork · {person.upworkBadge}
+                <FaLinkedin className="text-base" />
+                LinkedIn
               </a>
               <a
                 href="#projects"

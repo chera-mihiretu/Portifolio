@@ -244,7 +244,7 @@ export async function buildProposalProfile(): Promise<ProposalProfile> {
     contact: {
       upworkUrl: portfolio.person.upwork,
       upworkBadge: portfolio.person.upworkBadge,
-      cta: `Hire me on Upwork · ${portfolio.person.upworkBadge}`,
+      cta: 'Get in touch',
     },
     services: [...services],
     process: [...processSteps],

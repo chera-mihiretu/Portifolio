@@ -99,7 +99,7 @@ export default function Header() {
               onClick={() => scrollTo('contact')}
               className="hidden sm:inline-flex h-10 items-center rounded-xl bg-[var(--foreground)] px-4 text-sm font-semibold text-[var(--background)] hover:opacity-90 transition-opacity"
             >
-              Build with me
+              Get in touch
             </button>
           </div>
         </div>

@@ -1,7 +1,9 @@
 import {
   FaAws,
   FaCloud,
+  FaEnvelope,
   FaGlobeAfrica,
+  FaLinkedin,
   FaMedal,
   FaTrophy,
 } from 'react-icons/fa';
@@ -15,6 +17,8 @@ export const person = {
     'I build autonomous AI agents, self-running business workflows, and intelligent backend systems for companies that want to scale without scaling headcount.',
   upwork: 'https://www.upwork.com/freelancers/~0146654bf4de11a784',
   upworkBadge: 'Top Rated',
+  email: 'cheramihiretu@gmail.com',
+  linkedin: 'https://linkedin.com/in/chera-mihiretu-a267472a2/',
   featured: {
     name: '8D Audio Experience',
     tagline: 'Chrome extension · immersive 3D spatial audio',
@@ -426,9 +430,14 @@ export const achievements = [
 
 export const socialLinks = [
   {
-    name: 'Hire me on Upwork · Top Rated',
-    url: person.upwork,
-    icon: SiUpwork,
+    name: 'Get in touch',
+    url: 'mailto:cheramihiretu@gmail.com',
+    icon: FaEnvelope,
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/chera-mihiretu-a267472a2/',
+    icon: FaLinkedin,
   },
 ] as const;
 

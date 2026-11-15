@@ -81,7 +81,7 @@ const Navbar = () => {
               onClick={() => scrollToSection('contact')}
               className="hidden sm:flex items-center gap-2 px-5 py-2 rounded-lg bg-[var(--foreground)] text-[var(--background)] font-medium text-sm hover:opacity-90 transition-opacity"
             >
-              <span>Hire Me</span>
+              <span>Get in Touch</span>
             </button>
           </div>
         </div>

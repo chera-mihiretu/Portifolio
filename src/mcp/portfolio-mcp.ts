@@ -75,7 +75,7 @@ export const MCP_RESOURCES = [
   {
     uri: 'portfolio://contact',
     name: 'contact',
-    description: 'Contact / hire CTA and Upwork link.',
+    description: 'Contact CTA and info.',
     mimeType: 'application/json',
   },
   {
