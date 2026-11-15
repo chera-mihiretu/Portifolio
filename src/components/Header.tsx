@@ -68,7 +68,7 @@ export default function Header() {
               <div className="h-2.5 w-2.5 rounded-sm bg-[var(--accent-secondary)] shadow-[0_0_22px_var(--glow-2)]" />
             </div>
             <div className="hidden sm:block leading-tight">
-              <div className="font-mono text-[11px] tracking-[0.22em] text-[var(--muted)]">AUTOMATION OS</div>
+              <div className="font-mono text-[11px] tracking-[0.22em] text-[var(--muted)]">BLOOMBERG SOFTWARE ENGINEER</div>
               <div className="text-sm font-semibold tracking-tight text-[var(--foreground)]">
                 Chera Mihiretu
               </div>

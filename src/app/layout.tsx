@@ -3,9 +3,9 @@ import "./globals.css";
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Chera Mihiretu | AI Automation Engineer',
+  title: 'Chera Mihiretu | Software Engineer at Bloomberg',
   description:
-    'e-school.et — one platform, a private address for every school. Chera Mihiretu builds host-based products, autonomous agents, and backend systems.',
+    'Chera Mihiretu is a Software Engineer at Bloomberg building high-reliability backend systems, autonomous agents, and host-based platforms like e-school.et.',
   icons: {
     icon: '/assets/logo-dark.png', // Assuming these assets exist, otherwise I should probably update them later
   },

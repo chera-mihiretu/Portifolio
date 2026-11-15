@@ -28,6 +28,10 @@ export default function ContactSection() {
             <p className="mt-3 max-w-2xl text-[var(--muted)] text-base sm:text-lg">
               If you’re a business owner or team lead, tell me what’s manual, slow, error-prone, or expensive. I’ll design an automation system that reliably runs.
             </p>
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-[var(--card-bg)] px-3 py-1.5 text-xs font-semibold text-[var(--foreground)]/80">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-secondary)] shadow-[0_0_16px_var(--glow-2)]" />
+              Software Engineer at Bloomberg
+            </p>
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <a
                 href={`mailto:${person.email}`}

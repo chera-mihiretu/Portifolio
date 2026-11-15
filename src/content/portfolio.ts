@@ -12,9 +12,10 @@ import type { IconType } from 'react-icons';
 
 export const person = {
   name: 'Chera Mihiretu',
-  title: 'AI Automation Engineer',
+  title: 'Software Engineer at Bloomberg',
+  company: 'Bloomberg',
   identitySentence:
-    'I build autonomous AI agents, self-running business workflows, and intelligent backend systems for companies that want to scale without scaling headcount.',
+    'Software Engineer at Bloomberg. I build autonomous AI agents, self-running business workflows, and intelligent backend systems.',
   upwork: 'https://www.upwork.com/freelancers/~0146654bf4de11a784',
   upworkBadge: 'Top Rated',
   email: 'cheramihiretu@gmail.com',
